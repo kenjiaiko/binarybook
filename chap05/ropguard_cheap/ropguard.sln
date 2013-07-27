@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ropguard", "ropguard\ropguard.vcxproj", "{24B489F7-A4B7-403A-9334-DCAA4F7A7BFD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "load_rg", "load_rg\load_rg.vcxproj", "{8DE865CA-63A9-456A-A113-E4D10DEB8697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24B489F7-A4B7-403A-9334-DCAA4F7A7BFD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24B489F7-A4B7-403A-9334-DCAA4F7A7BFD}.Debug|Win32.Build.0 = Debug|Win32
+		{24B489F7-A4B7-403A-9334-DCAA4F7A7BFD}.Release|Win32.ActiveCfg = Release|Win32
+		{24B489F7-A4B7-403A-9334-DCAA4F7A7BFD}.Release|Win32.Build.0 = Release|Win32
+		{8DE865CA-63A9-456A-A113-E4D10DEB8697}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DE865CA-63A9-456A-A113-E4D10DEB8697}.Debug|Win32.Build.0 = Debug|Win32
+		{8DE865CA-63A9-456A-A113-E4D10DEB8697}.Release|Win32.ActiveCfg = Release|Win32
+		{8DE865CA-63A9-456A-A113-E4D10DEB8697}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

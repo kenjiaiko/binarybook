@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "writeappinit", "writeappinit\writeappinit.vcxproj", "{AD4A27B2-341B-4C31-B265-C97A02E6C75E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "loging", "loging\loging.vcxproj", "{1B7B5EDF-EB22-4CDA-AE65-90E41B568782}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "setwindowshook", "setwindowshook\setwindowshook.vcxproj", "{FC248206-CB01-40F7-ADC8-3AEF1A260369}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD4A27B2-341B-4C31-B265-C97A02E6C75E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AD4A27B2-341B-4C31-B265-C97A02E6C75E}.Debug|Win32.Build.0 = Debug|Win32
+		{AD4A27B2-341B-4C31-B265-C97A02E6C75E}.Release|Win32.ActiveCfg = Release|Win32
+		{AD4A27B2-341B-4C31-B265-C97A02E6C75E}.Release|Win32.Build.0 = Release|Win32
+		{1B7B5EDF-EB22-4CDA-AE65-90E41B568782}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1B7B5EDF-EB22-4CDA-AE65-90E41B568782}.Debug|Win32.Build.0 = Debug|Win32
+		{1B7B5EDF-EB22-4CDA-AE65-90E41B568782}.Release|Win32.ActiveCfg = Release|Win32
+		{1B7B5EDF-EB22-4CDA-AE65-90E41B568782}.Release|Win32.Build.0 = Release|Win32
+		{FC248206-CB01-40F7-ADC8-3AEF1A260369}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC248206-CB01-40F7-ADC8-3AEF1A260369}.Debug|Win32.Build.0 = Debug|Win32
+		{FC248206-CB01-40F7-ADC8-3AEF1A260369}.Release|Win32.ActiveCfg = Release|Win32
+		{FC248206-CB01-40F7-ADC8-3AEF1A260369}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
