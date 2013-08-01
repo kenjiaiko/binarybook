@@ -15,8 +15,10 @@ Release or Debugフォルダ以下に実行ファイル一式が作成されます。
   
 ####3章のFreeBSDとUbuntu環境について
 OSごと必要なばあいはそれぞれ以下のURLからダウンロードできます。  
+FreeBSD-8.3  
 http://07c00.com/tmp/FreeBSD_8.3_binbook.zip
   
+Ubuntu-12.04  
 http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
   
 ログインのためのuser/passは書籍（3章）を確認してください。  
