@@ -14,12 +14,12 @@ VC++がインストールされていればそのままダブルクリックするだけでOKです。
 Release or Debugフォルダ以下に実行ファイル一式が作成されます。  
   
 ####3章のFreeBSDとUbuntu環境について
-OSごと必要なばあいはそれぞれ以下のURLからダウンロードできます。
-http://07c00.com/tmp/FreeBSD_8.3_binbook.zip
-http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
-ログインのためのuser/passは書籍（3章）を確認してください。
+OSごと必要なばあいはそれぞれ以下のURLからダウンロードできます。  
+http://07c00.com/tmp/FreeBSD_8.3_binbook.zip  
+http://07c00.com/tmp/Ubuntu-12.04_binbook.zip  
+ログインのためのuser/passは書籍（3章）を確認してください。  
   
-起動にはVMWare Playerが必要です。
+起動にはVMWare Playerが必要です。  
 http://www.vmware.com/products/player/
   
 ####正誤表
