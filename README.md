@@ -41,6 +41,6 @@ http://www.vmware.com/products/player/
   
 ####P228-P229のcolumnについて
 P229の「msfpayloadを使ってWindows環境で動作するshellcodeを作成」で  
-画像（コンソース）の文字が潰れてよく見えないかもしれません。  
+画像（コンソール）の文字が潰れてよく見えないかもしれません。  
 ![System Console](pics_for_readme/1.png)
   
