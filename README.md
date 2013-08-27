@@ -44,7 +44,7 @@ http://www.vmware.com/products/player/
 ˆÈ‰º‚Ì“®‰æ‚ÅExploit‚Ì‚¿‚å‚Á‚Æ‚µ‚½‰ğÍ‚ğ‚â‚Á‚Ä‚¢‚Ü‚·B  
 ‹»–¡‚ª‚ ‚ê‚ÎŒ©‚Ä‚İ‚Ä‚­‚¾‚³‚¢B  
   
-Introducing of Security Camp 2013 "Software security class"
+Introducing of Security Camp 2013 "Software security class"  
 http://www.youtube.com/watch?v=eUslcqff6_k
   
 ####P228-P229‚Ìcolumn‚É‚Â‚¢‚Ä
