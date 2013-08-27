@@ -39,6 +39,14 @@ http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
 起動にはVMWare Playerが必要です。  
 http://www.vmware.com/products/player/
   
+####P226で触れられているCVE-2009-0927の解析動画
+本書ではExploitの詳細にはほとんど触れていませんが、  
+以下の動画でExploitのちょっとした解析をやっています。  
+興味があれば見てみてください。  
+  
+Introducing of Security Camp 2013 "Software security class"
+http://www.youtube.com/watch?v=eUslcqff6_k
+  
 ####P228-P229のcolumnについて
 P229の「msfpayloadを使ってWindows環境で動作するshellcodeを作成」で  
 画像（コンソール）の文字が潰れてよく見えないかもしれません。  
