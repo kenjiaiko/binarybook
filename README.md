@@ -39,6 +39,14 @@ http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
 起動にはVMWare Playerが必要です。  
 http://www.vmware.com/products/player/
   
+####P159-P160のcolumnについて
+P159の「printf系関数に起因するフォーマットストリングバグ」は  
+以下のページで詳細を解説しています。  
+興味があれば読んでみてください。  
+  
+フォーマットストリングバグ（format bug）を試してみる。  
+http://07c00.hatenablog.com/entry/2013/08/10/112404
+  
 ####P226で触れられているCVE-2009-0927の解析動画
 本書ではExploitの詳細にはほとんど触れていませんが、  
 以下の動画でExploitのちょっとした解析をやっています。  
