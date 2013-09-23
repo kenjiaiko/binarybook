@@ -22,3 +22,6 @@ http://www.ollydbg.de/srcdescr.htm
 
 上記サイトで公開されているアセンブラ、逆アセンブラを
 Visual C++ 2010 Express版でビルドできるようにしたものです。
+
+アセンブラ命令とマシン語で相互変換したい。
+http://07c00.hatenablog.com/entry/2013/09/24/021307
