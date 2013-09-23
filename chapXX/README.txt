@@ -14,3 +14,11 @@ Windows環境にてプロセスをダンプするサンプルプログラムです。
 プロセスダンプするプログラムを作成してみよう！
 http://07c00.hatenablog.com/entry/2013/09/07/015519
 
+
+■asmdisas
+
+80x86 32-bit Disassembler and Assembler
+http://www.ollydbg.de/srcdescr.htm
+
+上記サイトで公開されているアセンブラ、逆アセンブラを
+Visual C++ 2010 Express版でビルドできるようにしたものです。

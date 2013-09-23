@@ -1,0 +1,738 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.71 [en] (Win95; I) [Netscape]">
+   <meta name="Author" content="Oleh Yuschuk (Olly)">
+   <meta name="Description" content="Source code of 80x86 32-bit Disassembler and Single-Line Assembler">
+   <meta name="KeyWords" content="Assembler, Disassembler, OllyDbg, Code Analysis, Code Walk">
+   <title>80x86 Assembler and Disasssembler</title>
+</head>
+<body>
+<b><font face="Arial"><font color="#990000"><font size=+2>80x86
+32-bit Disassembler and Assembler</font></font></font></b>
+<p><b><a href="#_Toc531975948">Legal part</a></b>
+<br><b><a href="#_Toc531975949">Introduction</a></b>
+<br><b><a href="#_Toc531975950">Brief description of functions</a></b>
+<br><b><a href="#_Toc531975951">Assemble</a></b>
+<br><b><a href="#_Toc531975952">Checkcondition</a></b>
+<br><b><a href="#_Toc531975953">Decodeaddress</a></b>
+<br><b><a href="#_Toc531975954">Disasm</a></b>
+<br><b><a href="#_Toc531975955">Disassembleback</a></b>
+<br><b><a href="#_Toc531975956">Disassembleforward</a></b>
+<br><b><a href="#_Toc531975957">Isfilling</a></b>
+<br><b><a href="#_Toc531975958">Printfloat* functions</a></b>
+<p>
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975948"></a><b><font face="Arial"><font color="#990000"><font size=+1>Legal
+part</font></font></font></b>
+<p>This package includes source code of 32-bit Disassembler and 32-bit
+single line Assembler for 80x86-compatible processors. The source is a
+slightly stripped version of code used in OllyDbg v1.04 and is well proven
+by its numerous users. (If you haven't heard before, <a href="http://home.t-online.de/home/OllyDbg">OllyDbg</a>
+is a 32-bit Assembler level debugger with powerful analyzing capabilities
+that makes binary machine code understandable).
+<p>This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version. This program is distributed in the hope that
+it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the GNU
+General Public License (<font color="#0000FF"><a href="http://www.fsf.org/copyleft/gpl.html">http://www.fsf.org/copyleft/gpl.html)</a></font>
+for more details.
+<p>You should have received a copy of the GNU General Public License (<i>gpl.txt</i>)
+along with this program; if not, write to the Free Software Foundation,
+Inc., 59 Temple Place, Suite 330, Boston, MA&nbsp; 02111-1307&nbsp; USA.<b></b>
+<p>All brand names and product names used in 80x86 Assembler and Disassembler,
+accompanying files or in this help file are trademarks, registered trademarks,
+or trade names of their respective holders.
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975949"></a><b><font face="Arial"><font color="#990000"><font size=+1>Introduction</font></font></font></b>
+<p>Disassembler understands all standard 80x86 commands, FPU, MMX, AMD's
+MMX extensions, Athlon/PIII MMX extensions and 3DNow! instructions. It
+does not decode SSI or SSI2 commands. Disassembler assumes 32 bit code
+and data segments but correctly decodes prefixed 16-bit commands. Several
+decoding modes allow you to select the amount of returned information (which
+is inversely proportional to execution speed): command length only, basic
+information useful for code analysis, or full decoding with dump and assembler
+form. Multiple options select desired format. Disassembler and Assembler
+support both MASM and Borland's IDEAL modes.
+<p>Assembler converts single command from the ASCII form to the binary
+code. It allows to find several possible encodings, or even to create search
+patterns with undefined operands.
+<p>This package includes following files:
+<ul>
+<li>
+<i>disasm.h</i> - common definitions</li>
+
+<li>
+<i>disasm.c</i> - Disassembler</li>
+
+<li>
+<i>assembl.c</i> - Assembler</li>
+
+<li>
+<i>asmserv.c</i> - table of commands and service functions</li>
+
+<li>
+<i>main.c</i> - demo program</li>
+</ul>
+Total source size exceeds <b>3800 lines</b> of dense text (more than <b>190
+K</b>!). I have used Borland C and do not guarantee that it will work with
+any other compiler. <b>Please set the default character type to unsigned!</b>
+Please also place the following statements into the main file of your program,
+and do <b>not</b> #define MAINPROG in any other file:
+<p><b><font face="Courier New"><font color="#000000"><font size=-1>&nbsp;&nbsp;&nbsp;
+#define MAINPROG // Place all unique variables here</font></font></font></b>
+<br><b><font face="Courier New"><font color="#000000"><font size=-1>&nbsp;&nbsp;&nbsp;
+#include "disasm.h"</font></font></font></b>
+<p>(I use this trick to define shared global variables). Below is a small
+piece of code disassembled with OllyDbg 1.04 using different text settings:
+<br>&nbsp;
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><tt>004505B3&nbsp; A1 DC464B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOV EAX,DS:[4B46DC]</tt>
+<br><tt>004505B8&nbsp; 8B0498&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOV EAX,DS:[EAX+EBX*4]</tt>
+<br><tt>004505BB&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PUSH EAX</tt>
+<br><tt>004505BC&nbsp; 8D85 E0FBFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LEA EAX,SS:[EBP-420]</tt>
+<br><tt>004505C2&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PUSH EAX</tt>
+<br><tt>004505C3&nbsp; E8 141BFCFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CALL 004120DC&nbsp;</tt>
+<br><tt>004505C8&nbsp; 83C4 08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ADD ESP,8</tt>
+<br><tt>004505CB&nbsp; 43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+INC EBX</tt>
+<br><tt>004505CC&nbsp; 3B1D D8464B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CMP EBX,DS:[4B46D8]</tt>
+<br><tt>004505D2&nbsp; 0F8C AFFEFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+JL 00450487&nbsp;</tt>
+<br><tt>004505D8&nbsp; 80BD E0FDFFFF 00&nbsp;&nbsp;&nbsp; CMP BYTE PTR
+SS:[EBP-220],0</tt>
+<br><tt>004505DF&nbsp; 75 14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+JNZ SHORT 004505F5</tt>
+<br><tt>004505E1&nbsp; 68 B39E4600&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PUSH 469EB3&nbsp;</tt>
+<br><tt>004505E6&nbsp; 8D85 E0FDFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LEA EAX,SS:[EBP-220]</tt>
+<br><tt>004505EC&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PUSH EAX</tt>
+<br><tt>004505ED&nbsp; E8 521BFCFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CALL 00412144&nbsp;&nbsp;&nbsp;</tt></td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" >
+<tr>
+<td><tt>004505B3&nbsp; A1 DC464B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mov&nbsp;&nbsp;&nbsp;&nbsp; eax,[dword ds:4B46DC]</tt>
+<br><tt>004505B8&nbsp; 8B0498&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+mov&nbsp;&nbsp;&nbsp;&nbsp; eax,[dword ds:eax+ebx*4]</tt>
+<br><tt>004505BB&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+push&nbsp;&nbsp;&nbsp; eax</tt>
+<br><tt>004505BC&nbsp; 8D85 E0FBFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lea&nbsp;&nbsp;&nbsp;&nbsp; eax,[dword ss:ebp-420]</tt>
+<br><tt>004505C2&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+push&nbsp;&nbsp;&nbsp; eax</tt>
+<br><tt>004505C3&nbsp; E8 141BFCFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+call&nbsp;&nbsp;&nbsp; 004120DC</tt>
+<br><tt>004505C8&nbsp; 83C4 08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+add&nbsp;&nbsp;&nbsp;&nbsp; esp,8</tt>
+<br><tt>004505CB&nbsp; 43&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+inc&nbsp;&nbsp;&nbsp;&nbsp; ebx</tt>
+<br><tt>004505CC&nbsp; 3B1D D8464B00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+cmp&nbsp;&nbsp;&nbsp;&nbsp; ebx,[dword ds:4B46D8]</tt>
+<br><tt>004505D2&nbsp; 0F8C AFFEFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+jl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00450487</tt>
+<br><tt>004505D8&nbsp; 80BD E0FDFFFF 00&nbsp;&nbsp;&nbsp; cmp&nbsp;&nbsp;&nbsp;&nbsp;
+[byte ss:ebp-220],0</tt>
+<br><tt>004505DF&nbsp; 75 14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+jnz&nbsp;&nbsp;&nbsp;&nbsp; short 004505F5</tt>
+<br><tt>004505E1&nbsp; 68 B39E4600&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+push&nbsp;&nbsp;&nbsp; 469EB3</tt>
+<br><tt>004505E6&nbsp; 8D85 E0FDFFFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+lea&nbsp;&nbsp;&nbsp;&nbsp; eax,[dword ss:ebp-220]</tt>
+<br><tt>004505EC&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+push&nbsp;&nbsp;&nbsp; eax</tt>
+<br><tt>004505ED&nbsp; E8 521BFCFF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+call&nbsp;&nbsp;&nbsp; 00412144</tt></td>
+</tr>
+</table>
+
+<p>
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975950"></a><b><font face="Arial"><font color="#990000"><font size=+1>Brief
+description of functions</font></font></font></b>
+<ul>
+<li>
+<font color="#990000">int <b><a href="#_Toc531975951">Assemble</a></b>(char
+*cmd,ulong ip,t_asmmodel *model,int attempt,int constsize,char *errtext)</font>
+- assembles text command to binary code;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975952">Checkcondition</a></b>(int
+code,ulong flags)</font> - checks whether flags met condition in the command;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975953">Decodeaddress</a></b>(ulong
+addr,ulong base,int addrmode,char *symb,int nsymb,char *comment)</font>
+- user-supplied function that decodes addresses into symbolic names;</li>
+
+<li>
+<font color="#990000">ulong <b><a href="#_Toc531975954">Disasm</a></b>(char
+*src,ulong srcsize,ulong srcip,t_disasm *disasm,int disasmmode)</font>
+- determines length of the binary command or disassembles it to the text;</li>
+
+<li>
+<font color="#990000">ulong <b><a href="#_Toc531975955">Disassembleback</a></b>(char
+*block,ulong base,ulong size,ulong ip,int n)</font> - walks binary code
+backward;</li>
+
+<li>
+<font color="#990000">ulong <b><a href="#_Toc531975956">Disassembleforward</a></b>(char
+*block,ulong base,ulong size,ulong ip,int n)</font> - walks binary code
+forward;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975957">Isfilling</a></b>(ulong
+addr,char *data,ulong size,ulong align) </font>- determines whether command
+is equivalent to NOP;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975958">Print3dnow</a></b>(char
+*s,char *f)</font> - converts 3DNow! constant to text without triggering
+FPU exception for invalid operands;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975958">Printfloat10</a></b>(char
+*s,long double ext)</font> - converts 10-byte floating constant to text
+without causing exception;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975958">Printfloat4</a></b>(char
+*s,float f)</font> - converts 4-byte floating constant to text without
+causing exception;</li>
+
+<li>
+<font color="#990000">int <b><a href="#_Toc531975958">Printfloat8</a></b>(char
+*s,double d)</font> - converts 8-byte floating constant to text without
+causing exception.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975951"></a><b><font face="Arial"><font color="#990000"><font size=+1>Assemble</font></font></font></b>
+<p>Function Assemble(), as expected, converts command from ASCII form to
+binary 32 bit code. It shares command table with Disasm(), so if some command
+can be disassembled, it can be assembled back too, with one exception:
+Assemble doesn't support 16 bit addresses. With some unimportant exceptions,
+16 bit addresses cannot be used in Win32 programs.
+<p>Some commands have more than one encoding. Assemble() allows you to
+find them all. This is important, for example, if you want to find the
+shortest possible code or to find all possible occurrences of this command
+in the code. There are two parameters, constsize and attempt. First parameter
+selects size of immediate constant and address constant (8 or 32 bits),
+second is the occurrence of the command in the command table. To find all
+variants, call Assemble() with attempt=0,1,2... and for each attempt with
+constsize=0,1,2,3 as long as function reports success for at least one
+constsize. Generated codes may repeat. Please note that if command uses
+memory addresses, only one form will be generated in each case: [EAX*2]
+but not [EAX+EAX]; [EBX+EAX] but not [EAX+EBX]; [EAX] will not use SIB
+byte; no DS: prefix and so on.
+<p>Assemble compiles also imprecise commands that include following generalized
+operands:
+<ul>
+<li>
+R8 - any 8-bit register (stays for AL, BL, CL, DL, AH, BH, CH, DH)</li>
+
+<li>
+R16 - any 16 bit register (AX, BX, CX, DX, SP, BP, SI, DI)</li>
+
+<li>
+R32 - any 32 bit register (EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI)</li>
+
+<li>
+FPU - any FPU register (ST0..ST7)</li>
+
+<li>
+MMX - any MMX register (MM0..MM7)</li>
+
+<li>
+CRX - any control register (CR0..CR7)</li>
+
+<li>
+DRX - any debug register (DR0..DR7)</li>
+
+<li>
+CONST - any constant</li>
+</ul>
+This allows to generate imprecise search patterns, where mask contains
+zero bits at the positions occupied by imprecise operands in binary code.
+For example, patterns generated for command MOV R32,CONST will match both
+MOV EAX,1 and MOV ECX,12345678h.
+<p>Function returns number of bytes in assembled code or non-positive (zero
+or negative) number in case of error or when variant selected by combination
+of attempt and constsize doesn't exist. This number is the negative position
+of error in the input command. If you generate executable code, imprecise
+commands are usually not allowed. To assure that command is precise, check
+that all significant bytes in mask contain 0xFF.
+<p><b><font color="#0000FF">int Assemble(char *cmd,ulong ip,t_asmmodel
+*model,int attempt,int constsize,char *errtext);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">cmd</font> - pointer to zero terminated ASCII command;</li>
+
+<li>
+<font color="#0000FF">pi</font> - address of the first byte of generated
+binary command in memory;</li>
+
+<li>
+<font color="#0000FF">model</font> - pointer to the structure that receives
+machine code and mask, see detailed description below;</li>
+
+<li>
+<font color="#0000FF">attempt</font> - index of alternative encoding of
+the command. Call Assemble with attempt=0,1,2... to obtain all possible
+versions of the command. Stop this sequence when Assemble reports error;</li>
+
+<li>
+<font color="#0000FF">constsize</font> - requested size of address constant
+and immediate data. Call Assemble with constsize=0,1,2,3 to obtain all
+possible encodings of the version selected by attempt;</li>
+
+<li>
+<font color="#0000FF">errtext</font> - pointer to text buffer of length
+at least TEXTLEN bytes that receives description of detected error.</li>
+</ul>
+<b>t_asmmodel</b>: structure that receives assembled code.
+<p><tt><font color="#000000">typedef struct t_asmmodel {&nbsp;&nbsp;&nbsp;
+// Model to search for assembler command</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; char code[MAXCMDSIZE];&nbsp;&nbsp;&nbsp;&nbsp;
+// Binary code</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; char mask[MAXCMDSIZE];&nbsp;&nbsp;&nbsp;&nbsp;
+// Mask for binary code (0: bit ignored)</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int length;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Length of code, bytes (0: empty)</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int jmpsize;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Offset size if relative jump</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int jmpoffset;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Offset relative to IP</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int jmppos;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Position of jump offset in command</font></tt>
+<br><tt><font color="#000000">} t_asmmodel;</font></tt>
+<p><b>Members</b>:
+<ul>
+<li>
+<font color="#0000FF">code</font> - binary code of the command. Only bits
+that have 1's in corresponding mask bits are significant;</li>
+
+<li>
+<font color="#0000FF">mask</font> - comparison mask. Search routine ignores
+all code bits where mask is set to 0;</li>
+
+<li>
+<font color="#0000FF">length</font> - length of code and mask, bytes. If
+length is 0, search model is empty or invalid;</li>
+
+<li>
+<font color="#0000FF">jmpsize</font> - if nonzero, command is a relative
+jump and jmpsize is a size of offset in bytes;</li>
+
+<li>
+<font color="#0000FF">jmpoffset</font> - if jmpsize is nonzero, jump offset
+relative to address of the following command, otherwise undefined;</li>
+
+<li>
+<font color="#0000FF">jmppos</font> - if jmpsize is nonzero, position of
+the first byte of the offset in code, otherwise undefined.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975952"></a><b><font face="Arial"><font color="#990000"><font size=+1>Checkcondition</font></font></font></b>
+<p>Checks whether 80x86 flags meet condition code in the command. Returns
+1 if condition is met and 0 if not.
+<p><b><font color="#0000FF">int Checkcondition(int code,ulong flags);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">code</font> - byte of command that contains condition
+code;</li>
+
+<li>
+<font color="#0000FF">flags</font> - contents of register EFL.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975953"></a><b><font face="Arial"><font color="#990000"><font size=+1>Decodeaddress</font></font></font></b>
+<p>Custom user-supplied function that converts constant (address) into
+symbolic name. Initially, source code includes dummy function that returns
+0.
+<p>Decodeaddress() decodes memory address or constant to the ASCII string
+and optionally comments this address. Returns length of decoded string
+(not including terminal 0), or 0 on error or if symbolic name is not available.
+<p><b><font color="#0000FF">int Decodeaddress(ulong addr,char *symb,int
+nsymb,char *comment);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">addr</font> - address to decode in address space
+of debugged program;</li>
+
+<li>
+<font color="#0000FF">symb</font> - pointer to buffer of length at least
+nsymb bytes where Decodeaddress() places decoded string;</li>
+
+<li>
+<font color="#0000FF">nsymb</font> - length, in characters, of buffer symb;</li>
+
+<li>
+<font color="#0000FF">comment</font> - pointer to string of length at least
+TEXTLEN bytes or NULL, receives comment associated with addr.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975954"></a><b><font face="Arial"><font color="#990000"><font size=+1>Disasm</font></font></font></b>
+<p>The most important (and complex) function in this package. Depending
+on the specified disasmmode, Disasm() performs one of the four functions:
+<ul>
+<li>
+<b>DISASM_SIZE</b> - quickly determines size of the command. Use this mode
+if you want to walk through the code. In this mode, treat all members of
+disasm as undefined;</li>
+
+<li>
+<b>DISASM_DATA</b> - determines size and analyses operands. Use this mode
+for quick analysis, for example, if you need to calculate jump destination.
+Members of disasm marked with asterisk (*) are undefined;</li>
+
+<li>
+<b>DISASM_FILE</b> - determines size, analyses operand and disassembles
+command, but doesn't attempt to convert addresses to symbols. Use this
+mode if there is no correspondence between addresses and symbols, for example,
+if you dump the contents of binary file;</li>
+
+<li>
+<b>DISASM_CODE</b> - full disassembly.</li>
+</ul>
+Function returns size of disassembled command. There are several global
+constants that influence the behavior of this function. They are described
+later in this section. All symbolic constants are described in file <i>disasm.h</i>.
+<p><b><font color="#0000FF">ulong Disasm(char *src,ulong srcsize,ulong
+srcip,t_disasm *disasm,int disasmmode);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">src</font> - pointer to binary code that must be
+disassembled;</li>
+
+<li>
+<font color="#0000FF">srcsize</font> - size of src. Length of 80x86 command
+is limited to MAXCMDSIZE bytes;</li>
+
+<li>
+<font color="#0000FF">srcip</font> - address of the command;</li>
+
+<li>
+<font color="#0000FF">disasm</font> - pointer to structure that receives
+results of disassembling, see detailed description below;</li>
+
+<li>
+<font color="#0000FF">disasmmode</font> - disassembly mode, one of DISASM_xxx
+(see above).</li>
+</ul>
+<b>t_disasm:</b>
+<p><tt><font color="#000000">typedef struct t_disasm {&nbsp;&nbsp;&nbsp;&nbsp;
+// Results of disassembling</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; ulong pi;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Instruction pointer</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; char dump[TEXTLEN];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// (*) Hexadecimal dump of the command</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; char result[TEXTLEN];&nbsp;&nbsp;&nbsp;&nbsp;
+// (*) Disassembled command</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; char comment[TEXTLEN];&nbsp;&nbsp;&nbsp;
+// (*) Brief comment</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int cmdtype;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// One of C_xxx</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int memtype;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Type of addressed variable in memory</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int nprefix;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Number of prefixes</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int indexed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Address contains register(s)</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; ulong jmpconst;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Constant jump address</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; ulong jmptable;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Possible address of switch table</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; ulong adrconst;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Constant part of address</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; ulong immconst;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Immediate constant</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int zeroconst;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Whether contains zero constant</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int fixupoffset;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Possible offset of 32 bit fixups</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int fixupsize;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Possible total size of fixups or 0</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int error;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Error while disassembling command</font></tt>
+<br><tt><font color="#000000">&nbsp;&nbsp;&nbsp; int warnings;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Combination of DAW_xxx</font></tt>
+<br><tt><font color="#000000">} t_disasm;</font></tt>
+<p><b>Members</b>:
+<ul>
+<li>
+<font color="#0000FF">pi</font> - address of the disassembled command;</li>
+
+<li>
+<font color="#0000FF">dump</font> - ASCII string, formatted hexadecimal
+dump of the command;</li>
+
+<li>
+<font color="#0000FF">result</font> - ASCII string, disassembled command
+itself;</li>
+
+<li>
+<font color="#0000FF">comment</font> - ASCII string, brief comment that
+applies to the whole command;</li>
+
+<li>
+<font color="#0000FF">cmdtype</font> - type of the disassembled command,
+one of C_xxx possibly ORed with C_RARE to indicate that command is seldom
+in ordinary Win32 applications. Commands of type C_MMX additionally contain
+size of MMX data in the 3 least significant bits (0 means 8-byte operands).
+Non-MMX commands may have C_EXPL bit set which means that some memory operand
+has size which is not conform with standard 80x86 rules;</li>
+
+<li>
+<font color="#0000FF">memtype</font> - type of memory operand, one of DEC_xxx,
+or DEC_UNKNOWN if operand is non-standard or command does not access memory;</li>
+
+<li>
+<font color="#0000FF">nprefix</font> - number of prefixes that this command
+contains;</li>
+
+<li>
+<font color="#0000FF">indexed</font> - if memory address contains index
+register, set to scale, otherwise 0;</li>
+
+<li>
+<font color="#0000FF">jmpconst</font> - address of jump destination if
+this address is a constant, and 0 otherwise;</li>
+
+<li>
+<font color="#0000FF">jmptable</font> - if indirect jump can be interpreted
+as switch, base address of switch table and 0 otherwise;</li>
+
+<li>
+<font color="#0000FF">adrconst</font> - constant part of memory address;</li>
+
+<li>
+<font color="#0000FF">immconst</font> - immediate constant or 0 if command
+contains no immediate constant. The only command that contains two immediate
+constants is ENTER. Disasm() ignores second constant which is anyway 0
+in most cases;</li>
+
+<li>
+<font color="#0000FF">zeroconst</font> - nonzero if command contains immediate
+zero constant;</li>
+
+<li>
+<font color="#0000FF">fixupoffset</font> - possible start of 32 bit fixup
+within the command, or 0 if command can't contain fixups;</li>
+
+<li>
+<font color="#0000FF">fixupsize</font> - possible total size of fixups
+(0, 4 or 8). If command contains both immediate constant and immediate
+address, they are always adjacent on 80x86 processors;</li>
+
+<li>
+<font color="#0000FF">error</font> - Disasm() was unable to disassemble
+command (for example, command does not exist or crosses end of memory block),
+one of DAE_xxx;</li>
+
+<li>
+<font color="#0000FF">warnings</font> - command is suspicious or meaningless
+(for example, far jump or MOV EAX,EAX preceded with segment prefix), combination
+of DAW_xxx bits;</li>
+</ul>
+<b>Global flags that influence text of disassembled command:</b>
+<ul>
+<li>
+<font color="#0000FF">ideal</font> - force IDEAL decoding mode</li>
+
+<li>
+<font color="#0000FF">lowercase</font> - force lowercase</li>
+
+<li>
+<font color="#0000FF">tabarguments</font> - insert tab between mnemonic
+and arguments</li>
+
+<li>
+<font color="#0000FF">extraspace</font> - insert extra space between arguments</li>
+
+<li>
+<font color="#0000FF">putdefseg</font> - show default segments</li>
+
+<li>
+<font color="#0000FF">showmemsize</font> - always show memory size</li>
+
+<li>
+<font color="#0000FF">shownear</font> - show NEAR modifiers</li>
+
+<li>
+<font color="#0000FF">shortstringcmds</font> - use short form of string
+commands</li>
+
+<li>
+<font color="#0000FF">sizesens</font> - mode of decoding of size-sensitive
+mnemonics (16/32 bits) like:</li>
+</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0 - PUSHA/PUSHAD
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 - PUSHAW/PUSHAD
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2 - PUSHAW/PUSHA
+<ul>
+<li>
+<font color="#0000FF">symbolic</font> - show symbolic addresses, requires
+Decodeaddress()</li>
+</ul>
+<b>Global flags that warn of potentially invalid commands:</b>
+<ul>
+<li>
+<font color="#0000FF">farcalls</font> - accept far calls, returns &amp;
+addresses</li>
+
+<li>
+<font color="#0000FF">decodevxd</font> - decode VxD calls (Win95/98)</li>
+
+<li>
+<font color="#0000FF">privileged</font> - accept privileged commands</li>
+
+<li>
+<font color="#0000FF">iocommand</font> - accept I/O commands</li>
+
+<li>
+<font color="#0000FF">badshift</font> - accept shift out of range 1..31</li>
+
+<li>
+<font color="#0000FF">extraprefix</font> - accept superfluous prefixes</li>
+
+<li>
+<font color="#0000FF">lockedbus</font> - accept LOCK prefixes</li>
+
+<li>
+<font color="#0000FF">stackalign</font> - accept unaligned stack operations</li>
+
+<li>
+<font color="#0000FF">iswindowsnt</font> - when checking for dangerous
+commands, assume NT-based OS</li>
+</ul>
+If Disasm() encounters potentially invalid command and corresponding flag
+is 0, it sets bit in disasm->warning and places warning message in disasm->comment.
+<p>
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975955"></a><b><font face="Arial"><font color="#990000"><font size=+1>Disassembleback</font></font></font></b>
+<p>Calculates address of assembler instruction that is n instructions (maximally
+127) back from the instruction at specified pi. Returns address of found
+instruction. In case of error, it may be less than n instructions apart.
+<p>80x86 commands have variable length. Disassembleback uses heuristical
+methods to separate commands and in some (astoundingly rare!) cases may
+return invalid answer.
+<p><b><font color="#0000FF">ulong Disassembleback(char *block,ulong base,ulong
+size,ulong ip,int n);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">block</font> - pointer to the copy of code;</li>
+
+<li>
+<font color="#0000FF">base</font> - address of first byte in the code block;</li>
+
+<li>
+<font color="#0000FF">size</font> - size of code block;</li>
+
+<li>
+<font color="#0000FF">pi</font> - address of current instruction;</li>
+
+<li>
+<font color="#0000FF">n</font> - number of instructions to walk back.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975956"></a><b><font face="Arial"><font color="#990000"><font size=+1>Disassembleforward</font></font></font></b>
+<p>Calculates address of assembler instruction that is n instructions forward
+from instruction at specified address. Returns address of found instruction.
+In case of error, it may be less than n instructions apart.
+<p><b><font color="#0000FF">ulong Disassembleforward(char *block,ulong
+base,ulong size,ulong ip,int n,int usedec);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">block</font> - pointer to the copy of code;</li>
+
+<li>
+<font color="#0000FF">base</font> - address of first byte in the code block;</li>
+
+<li>
+<font color="#0000FF">size</font> - size of code block;</li>
+
+<li>
+<font color="#0000FF">pi</font> - address of current instruction;</li>
+
+<li>
+<font color="#0000FF">n</font> - number of instructions to walk forward.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975957"></a><b><font face="Arial"><font color="#990000"><font size=+1>Isfilling</font></font></font></b>
+<p>Function determines whether pointed instruction is a no-action command
+(equivalent to NOP) used by different compilers to fill the gap between
+procedures or data blocks to a specified aligned border. Returns length
+of filling command in bytes or 0 if command is not a recognized filling.
+<p><b><font color="#0000FF">int Isfilling(ulong addr,char *data,ulong size,ulong
+align);</font></b>
+<p><b>Parameters</b>:
+<ul>
+<li>
+<font color="#0000FF">addr</font> - address of the first byte of analyzed
+command;</li>
+
+<li>
+<font color="#0000FF">data</font> - pointer to the binary command;</li>
+
+<li>
+<font color="#0000FF">size</font> - size of data;</li>
+
+<li>
+<font color="#0000FF">align</font> - assumed alignment of the next non-filling
+command (power of 2), or 0 if alignment is not required.</li>
+</ul>
+
+<hr WIDTH="100%">
+<br><a NAME="_Toc531975958"></a><b><font face="Arial"><font color="#990000"><font size=+1>Printfloat*
+functions</font></font></font></b>
+<p>These functions decode 4-, 8-, 10-byte floating point number or 8-byte
+3DNow! operand into the text form to string s. They correctly decode all
+cases of NANs or INFs without triggering floating point exceptions. If
+operand is not a valid floating point number, functions print hexadecimal
+dump of the number. Return length of decoded string in bytes, not including
+terminal 0.
+<p><b><font color="#0000FF">int Print3dnow(char *s,char *f);</font></b>
+<br><b><font color="#0000FF">int Printfloat10(char *s,long double ext);</font></b>
+<br><b><font color="#0000FF">int Printfloat4(char *s,float f);</font></b>
+<br><b><font color="#0000FF">int Printfloat8(char *s,double d);</font></b>
+<br>&nbsp;
+<br>&nbsp;
+<p>Copyleft (C) 2001 Oleh Yuschuk
+<br>&nbsp;
+</body>
+</html>
