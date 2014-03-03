@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "6";
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="600">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+main関数を実行した。<br>
+出力される数値を答えよ。
+</p>
+
+<pre>
+(gdb) disas func
+Dump of assembler code for function func:
+  0x004004f4 &lt;+0&gt;:     push   %rbp
+  0x004004f5 &lt;+1&gt;:     mov    %rsp,%rbp
+  0x004004f8 &lt;+4&gt;:     mov    $0x4124cccd,%eax
+  0x004004fd &lt;+9&gt;:     mov    %eax,-0xc(%rbp)
+  0x00400500 &lt;+12&gt;:    mov    $0xc0133333,%eax
+  0x00400505 &lt;+17&gt;:    mov    %eax,-0x8(%rbp)
+  0x00400508 &lt;+20&gt;:    mov    $0x405c28f6,%eax
+  0x0040050d &lt;+25&gt;:    mov    %eax,-0x4(%rbp)
+  0x00400510 &lt;+28&gt;:    movss  -0x8(%rbp),%xmm0
+  0x00400515 &lt;+33&gt;:    mulss  -0x4(%rbp),%xmm0
+  0x0040051a &lt;+38&gt;:    addss  -0xc(%rbp),%xmm0
+  0x0040051f &lt;+43&gt;:    pop    %rbp
+  0x00400520 &lt;+44&gt;:    retq
+End of assembler dump.
+(gdb) disas main
+Dump of assembler code for function main:
+  0x00400521 &lt;+0&gt;:     push   %rbp
+  0x00400522 &lt;+1&gt;:     mov    %rsp,%rbp
+  0x00400525 &lt;+4&gt;:     sub    $0x10,%rsp
+  0x00400529 &lt;+8&gt;:     mov    %edi,-0x4(%rbp)
+  0x0040052c &lt;+11&gt;:    mov    %rsi,-0x10(%rbp)
+  0x00400530 &lt;+15&gt;:    callq  0x4004f4 &lt;func&gt;
+  0x00400535 &lt;+20&gt;:    unpcklps %xmm0,%xmm0
+  0x00400538 &lt;+23&gt;:    cvtps2pd %xmm0,%xmm0
+  0x0040053b &lt;+26&gt;:    mov    $0x40064c,%eax
+  0x00400540 &lt;+31&gt;:    mov    %rax,%rdi
+  0x00400543 &lt;+34&gt;:    mov    $0x1,%eax
+  0x00400548 &lt;+39&gt;:    callq  0x4003f0 &lt;printf@plt&gt;
+  0x0040054d &lt;+44&gt;:    mov    $0x0,%eax
+  0x00400552 &lt;+49&gt;:    leaveq
+  0x00400553 &lt;+50&gt;:    retq
+End of assembler dump.
+(gdb) x/1s 0x40064c
+0x40064c:        "%.5f\n"
+</pre>
+
+<p>
+Hint: 浮動小数点演算をやっています
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

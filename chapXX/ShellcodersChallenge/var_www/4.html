@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "4";
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="600">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+このライブラリ関数の名前（関数名）を答えよ。
+</p>
+
+<pre>
+080607ac &lt;function&gt;:
+ 80607ac:  57              push   %edi
+ 80607ad:  53              push   %ebx
+ 80607ae:  8b 7c 24 0c     mov    0xc(%esp),%edi
+ 80607b2:  0f b6 44 24 10  movzbl 0x10(%esp),%eax
+ 80607b7:  8b 4c 24 14     mov    0x14(%esp),%ecx
+ 80607bb:  57              push   %edi
+ 80607bc:  fc              cld    
+ 80607bd:  83 f9 0f        cmp    $0xf,%ecx
+ 80607c0:  7e 24           jle    80607e6 &lt;L1&gt;
+ 80607c2:  88 c4           mov    %al,%ah
+ 80607c4:  89 c2           mov    %eax,%edx
+ 80607c6:  c1 e0 10        shl    $0x10,%eax
+ 80607c9:  09 d0           or     %edx,%eax
+ 80607cb:  89 fa           mov    %edi,%edx
+ 80607cd:  f7 da           neg    %edx
+ 80607cf:  83 e2 03        and    $0x3,%edx
+ 80607d2:  89 cb           mov    %ecx,%ebx
+ 80607d4:  29 d3           sub    %edx,%ebx
+ 80607d6:  89 d1           mov    %edx,%ecx
+ 80607d8:  f3 aa           repz stos %al,%es:(%edi)
+ 80607da:  89 d9           mov    %ebx,%ecx
+ 80607dc:  c1 e9 02        shr    $0x2,%ecx
+ 80607df:  f3 ab           repz stos %eax,%es:(%edi)
+ 80607e1:  89 d9           mov    %ebx,%ecx
+ 80607e3:  83 e1 03        and    $0x3,%ecx
+080607e6 &lt;L1&gt;:
+ 80607e6:  f3 aa           repz stos %al,%es:(%edi)
+ 80607e8:  58              pop    %eax
+ 80607e9:  5b              pop    %ebx
+ 80607ea:  5f              pop    %edi
+ 80607eb:  c3              ret    
+</pre>
+
+<p>
+Hint: repz と stos の理解がキーポイント
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

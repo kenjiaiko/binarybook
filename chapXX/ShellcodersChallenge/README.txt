@@ -1,32 +1,4 @@
 
-このフォルダには
-書籍では触れていないプログラムを置いています。
-
-書籍を読んだあと
-さらに詳しい情報を知りたい方は参考にしてください。
-
-
-■dumpXX
-
-Windows環境にてプロセスをダンプするサンプルプログラムです。
-以下のページで簡単な解説をしています。
-
-プロセスダンプするプログラムを作成してみよう！
-http://07c00.hatenablog.com/entry/2013/09/07/015519
-
-
-■asmdisas
-
-80x86 32-bit Disassembler and Assembler
-http://www.ollydbg.de/srcdescr.htm
-
-上記サイトで公開されているアセンブラ、逆アセンブラを
-Visual C++ 2010 Express版でビルドできるようにしたものです。
-
-アセンブラ命令とマシン語で相互変換したい。
-http://07c00.hatenablog.com/entry/2013/09/24/021307
-
-
 ■ShellcodersChallenge
 
 セキュリティコンテスト SECCON2013 において
@@ -46,3 +18,9 @@ http://www.slideshare.net/KenjiAiko/on-web-30208130
 
 このままだと脆弱性があるプログラムとなっていますので
 あくまで自身のみがアクセスできる環境でお試しください。
+
+一部暗号化処理のためにPyCryptを使っています。
+https://www.dlitz.net/software/pycrypto/
+
+一部認証のために Captchaサービス を使っています。
+http://captchator.com/

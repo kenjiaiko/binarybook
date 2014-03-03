@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "9";
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+function AnswerConfirm()
+{
+	text = "閲覧すると初心者モードになります。よろしいですか？\n";
+	text += "（一度初心者モードになると戻すことはできません）";
+	ret = confirm(text);
+	if(ret == true){
+		window.open('cgi-bin/howto2.py');
+	}else{
+	}
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="600">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+Ubuntu/x86環境で以下のマシン語を実行した。<br>
+表示される文字列を答えよ。
+</p>
+
+<pre>
+b8 61 41 61 41 53 50 ba 04 00 00 00 bb 01 00 00 
+00 b8 04 00 00 00 89 e1 cd 80 58 31 c0 5b c3 90
+</pre>
+
+<p>
+<a href="javascript:void(0);" onclick="javascript:AnswerConfirm();">
+回答をみる（初心者向け）
+</a>
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

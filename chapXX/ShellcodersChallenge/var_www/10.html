@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "10";
+var g_cgi_assemblr_path = 'cgi-bin/asmbl.cgi';
+var g_cgi_disasmbl_path = 'cgi-bin/disas.cgi';
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+	
+	if(loading('l' + LEVEL, 1) == 0){
+		updating();
+	}
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+function exec()
+{
+	var ss = "";
+	var el = $('#machine').val();
+	var arr = el.split(/\r\n|\r|\n/);
+	for(var i=0; i < arr.length; i++){
+		var xxx = arr[i].split(/\#/);
+		var da = xxx[0].split(/ /);
+		for(var j=0; j < da.length; j++){
+			if(da[j].length == 2){
+				ss = ss.concat('%');
+				ss = ss.concat(da[j]);
+			}
+		}
+	}
+	ss = 'cgi-bin/' + LEVEL + '.cgi' + '?' + ss;
+	$.ajax({
+		url: ss,
+		dataType: "text",
+		cache: true,
+		success: function(data, textStatus){
+			if(document.fm.dbg.checked == false){
+				var ln = data.split("output:\n");
+				if(ln.length > 1){
+					data = ln[ln.length-1];
+				}else{
+					data = "";
+				}
+			}
+			$('#output')
+				.text(data)
+				.css('display', '');
+			if(data == "HelloASM"){
+				saving('l' + LEVEL);
+				window.localStorage[g_storage_clear_key] = "1";
+			}
+		},
+		beforeSend: function(xhr){
+			xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+		}
+	});
+}
+var _prev;
+
+function updating()
+{
+	var ss = "";
+	var el = $('#machine').val();
+	if(_prev != el){
+		var arr = el.split(/\r\n|\r|\n/);
+		for(var i=0; i < arr.length; i++){
+			var xxx = arr[i].split(/\#/);
+			var da = xxx[0].split(/ /);
+			for(var j=0; j < da.length; j++){
+				if(da[j].length == 2){
+					ss = ss.concat('%');
+					ss = ss.concat(da[j]);
+				}
+			}
+		}
+		ss = g_cgi_disasmbl_path + '?' + ss;
+		$.ajax({
+			url: ss,
+			dataType: "html",
+			cache: true,
+			success: function(data, textStatus){
+				$('#machine_t')
+					.text(data)
+					.css('display', '');
+				_prev = el;
+			},
+			beforeSend: function(xhr){
+				xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+			}
+		});
+	}
+}
+function saving(key)
+{
+	document.getElementById("menustatus").innerHTML = "code was saved...";
+	window.localStorage[key] = document.getElementById("machine").value;
+}
+function loading(key, first)
+{
+	if(window.localStorage[key] !== undefined){
+		document.getElementById("machine").value = window.localStorage[key];
+		updating();
+		document.getElementById("menustatus").innerHTML = "code was loaded...";
+	}else{
+		if(first == 1){
+			document.getElementById("menustatus").innerHTML = "input your code...";
+		}else{
+			document.getElementById("menustatus").innerHTML = "code couldn't be loaded...";
+		}
+	}
+	return 0;
+}
+function clearing(key)
+{
+	document.getElementById("menustatus").innerHTML = "code was cleard...";
+	window.localStorage.removeItem(key);
+}
+function textarea_open()
+{
+	document.getElementById("menustatus").innerHTML = " ";
+	$('#machine')
+		.val(_prev)
+		.css('display', '')
+		.focus();
+}
+function textarea_close()
+{
+	document.getElementById("menustatus").innerHTML = " ";
+	$('#machine')
+		.css('display', 'none');
+	updating();
+}
+
+var _keyprev = "";
+
+function keyup()
+{
+	var ss = "";
+	var el = document.getElementById("machine").value;
+	if(_keyprev != el){
+		var arr = el.split(/\r\n|\r|\n/);
+		for(var i=0; i < arr.length; i++){
+			var npos = arr[i].indexOf("=", 0);
+			if(npos == -1){
+				continue;
+			}
+			var ll = arr[i].split('=');
+			var cmd = ll[0];
+			ss = g_cgi_assemblr_path + '?' + cmd;
+			$.ajax({
+				url: ss,
+				dataType: "html",
+				cache: true,
+				success: function(data, textStatus){
+					if(data.indexOf('error', 0) != -1){
+						data = "error";
+					}
+					el = el.replace(cmd + "=", data + "#" + cmd);
+					document.getElementById("machine").value = el;
+					_keyprev = el;
+				},
+				beforeSend: function(xhr){
+					xhr.setRequestHeader("If-Modified-Since", "Thu, 01 Jun 1970 00:00:00 GMT");
+				}
+			});
+		}
+	}
+	updating();
+}
+function AnswerConfirm()
+{
+	text = "閲覧すると初心者モードになります。よろしいですか？\n";
+	text += "（一度初心者モードになると戻すことはできません）";
+	ret = confirm(text);
+	if(ret == true){
+		window.open('cgi-bin/howto2.py');
+	}else{
+	}
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="500">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+writeシステムコールを使って「HelloASM」という8文字を出力させよ。<br>
+（システムコールは一度しか呼べません）
+</p>
+
+<pre id="output" style="color:#ffffff; background-color:#000000; padding:6px;">
+[output console]
+</pre>
+
+<div>
+<form name="fm">
+<input type="button" value="Execute" onclick="javascript:exec()">
+<input type="checkbox" id="dbg">ExecLog
+</form>
+<div>
+
+<pre id="menustatus">
+input your code...
+</pre>
+
+<a href="javascript:void(0)" onclick="javascript:textarea_open()">open</a> /
+<a href="javascript:void(0)" onclick="javascript:textarea_close()">close</a> /
+<a href="javascript:void(0)" onclick="javascript:saving('l' + LEVEL)">save</a> /
+<a href="javascript:void(0)" onclick="javascript:loading('l' + LEVEL, 0)">load</a> /
+<a href="javascript:void(0)" onclick="javascript:clearing('l' + LEVEL)">clear</a>
+
+<textarea  rows="10" cols="50" name="data[machine]" id="machine" style="display:none;" onkeyup="javascript:keyup()">
+68 41 42 43 44
+68 45 46 47 48
+b8 04 00 00 00  #write syscall is 4
+89 e1           #address of text
+ba 08 00 00 00  #length of text is 8
+bb 01 00 00 00  #stdin is 1
+0f 34
+</textarea>
+
+<pre id="machine_t" style="padding:6px; width:350px;"></pre>
+
+<p>
+<a href="javascript:void(0);" onclick="javascript:AnswerConfirm();">
+回答をみる（初心者向け）
+</a>
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

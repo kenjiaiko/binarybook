@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "5";
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="600">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+以下のコードが実行された。<br>
+処理が 0x0040054b にきたときの %eax の値を 10進数 で答えよ。
+</p>
+
+<pre>
+004004f4 &lt;func&gt;:
+  4004f4:  55                   push   %rbp
+  4004f5:  48 89 e5             mov    %rsp,%rbp
+  4004f8:  c7 45 f0 00 00 00 00 movl   $0x0,-0x10(%rbp)
+  4004ff:  c7 45 fc 40 42 0f 00 movl   $0xf4240,-0x4(%rbp)
+  400506:  c7 45 f8 00 00 00 00 movl   $0x0,-0x8(%rbp)
+  40050d:  c7 45 f4 01 00 00 00 movl   $0x1,-0xc(%rbp)
+  400514:  eb 19                jmp    40052f &lt;func+0x3b&gt;
+  400516:  8b 45 f0             mov    -0x10(%rbp),%eax
+  400519:  89 c2                mov    %eax,%edx
+  40051b:  c1 fa 1f             sar    $0x1f,%edx
+  40051e:  f7 7d f4             idivl  -0xc(%rbp)
+  400521:  89 d0                mov    %edx,%eax
+  400523:  85 c0                test   %eax,%eax
+  400525:  75 04                jne    40052b &lt;func+0x37&gt;
+  400527:  83 45 f8 01          addl   $0x1,-0x8(%rbp)
+  40052b:  83 45 f4 01          addl   $0x1,-0xc(%rbp)
+  40052f:  8b 45 f4             mov    -0xc(%rbp),%eax
+  400532:  3b 45 f0             cmp    -0x10(%rbp),%eax
+  400535:  7e df                jle    400516 &lt;func+0x22&gt;
+  400537:  83 7d f8 02          cmpl   $0x2,-0x8(%rbp)
+  40053b:  75 0f                jne    40054c &lt;func+0x58&gt;
+  40053d:  83 6d fc 01          subl   $0x1,-0x4(%rbp)
+  400541:  83 7d fc 00          cmpl   $0x0,-0x4(%rbp)
+  400545:  75 05                jne    40054c &lt;func+0x58&gt;
+  400547:  8b 45 f0             mov    -0x10(%rbp),%eax
+  40054a:  5d                   pop    %rbp
+  40054b:  c3                   retq
+  40054c:  83 45 f0 01          addl   $0x1,-0x10(%rbp)
+  400550:  eb b4                jmp    400506 &lt;func+0x12&gt;
+</pre>
+
+<p>
+Hint: これは何を求める関数なのかを考えよう
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

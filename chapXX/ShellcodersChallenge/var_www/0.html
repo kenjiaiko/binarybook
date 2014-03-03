@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+var LEVEL = "0";
+
+function auth()
+{
+	document.getElementById("titl").innerHTML = "Level " + LEVEL;
+	
+	$.post('cgi-bin/auth.py',
+		{
+		'user': "",
+		'pass': ""
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result != "ok"){
+				location.href="login.html";
+			}
+		}
+	);
+
+	$.get('cgi-bin/check.py',
+		{
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				var ll = data.split(",");
+				for(var i=1; i < ll.length; i++){
+					if(ll[i] == LEVEL){
+						var old = "Level " + LEVEL +" <font color=\"#ff0000\">★</font>";
+						document.getElementById("titl").innerHTML = old;
+					}
+				}
+			}
+		}
+	);
+}
+function check()
+{
+	$.post('cgi-bin/q.py',
+		{
+		'level' : "l" + LEVEL,
+		'answer': document.getElementById("answer").value
+		},
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				txt = "<font color=\"#ff0000\">correct!</font>";
+				document.getElementById("mes").innerHTML = txt;
+				auth();
+			}else if(result == "lo"){
+				location.href = "login.html";
+			}else{
+				txt = "<font color=\"#000000\">incorrect...</font>";
+				document.getElementById("mes").innerHTML = txt;
+			}
+		}
+	);
+}
+function AnswerConfirm()
+{
+	text = "閲覧すると初心者モードになります。よろしいですか？\n";
+	text += "（一度初心者モードになると戻すことはできません）";
+	ret = confirm(text);
+	if(ret == true){
+		window.open('cgi-bin/howto.py');
+	}else{
+	}
+}
+</script>
+</head>
+
+<body onload="javascript:auth()">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="600">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>Answer:</td><td><input type="text" id="answer" value="">
+  <input type="button" value=" submit " onclick="javascript:check()">
+</td></tr>
+<tr><td></td><td id="mes">input your answer...</td></tr>
+</table>
+
+<h3 id="titl"></h3>
+
+<p>
+以下のコードが実行された。<br>
+処理が 0x00400519 にきたときの %eax の値を 10進数 で答えよ。
+</p>
+
+<pre>
+(gdb) disas func
+Dump of assembler code for function func:
+   0x004004f4 &lt;+0&gt;:     push   %rbp
+   0x004004f5 &lt;+1&gt;:     mov    %rsp,%rbp
+   0x004004f8 &lt;+4&gt;:     movl   $0x400,-0xc(%rbp)
+   0x004004ff &lt;+11&gt;:    movl   $0x3a98,-0x8(%rbp)
+   0x00400506 &lt;+18&gt;:    movl   $0xd,-0x4(%rbp)
+   0x0040050d &lt;+25&gt;:    mov    -0x8(%rbp),%eax
+   0x00400510 &lt;+28&gt;:    mov    -0xc(%rbp),%edx
+   0x00400513 &lt;+31&gt;:    add    %edx,%eax
+   0x00400515 &lt;+33&gt;:    sub    -0x4(%rbp),%eax
+   0x00400518 &lt;+36&gt;:    pop    %rbp
+   0x00400519 &lt;+37&gt;:    retq
+End of assembler dump.
+</pre>
+
+<p>
+Hint1: よくわからない命令はとりあえず無視しよう<br>
+Hint2: -0xX(%rbp)といったものは変数と考えよう<br>
+Hint3: あたまに 0x がついている数値は 16進数 で考えよう
+</p>
+
+<p>
+<a href="javascript:void(0);" onclick="javascript:AnswerConfirm();">
+回答をみる（初心者向け）
+</a>
+</p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+

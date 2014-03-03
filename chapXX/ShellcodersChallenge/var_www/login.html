@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Shellcoder&#039;s Challenge!</title>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+function auth(first)
+{
+	$.post('cgi-bin/auth.py',
+		{
+		'user': document.getElementById("user").value,
+		'pass': document.getElementById("pass").value
+		}, 
+		function(data)
+		{
+			result = data.substring(0, 2);
+			if(result == "ok"){
+				location.href="contents.html";
+			}else{
+				if(first == 0){
+					txt = "<font color=\"#ff0000\">auth err!</font>";
+					document.getElementById("mes").innerHTML = txt;
+				}
+			}
+		}
+	);
+}
+</script>
+</head>
+
+<body onload="javascript:auth(1)">
+<a href="http://www.seccon.jp/">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAAiBAMAAAD8PBWoAAAAA3NCSVQICAjb4U/gAAAAMFBMVEUODg4gICAwMC+gGRnfAQLiEhRaWlp3d3foTlCQkJDvgICqqqrzpKXk2tn49/f////O93FMAAAB3UlEQVRIie2WvUvDQBiHk6XBLbd0Nm4i6cf/0EIRR93bRREXdbC42MWKozhYioJLB3GxOAili6sgaF1Fgx2UDm06iVaaeElN7nextGITUOhve5IjD5f7eF/BDDZtobPLZ2fRzyy1hbcEl2RMGBhZ5lD0vvc8CFFB6hSTj08XIQVCNpH3SRixuEa44UWFLCMeWII57p+VYlHELiEa8qsoccMvSYRjRT5GfLcEs4bRYinFIkCtJiGPyM+ihNgqE5VjRd5CbNiC0WagemaQ0xkZXzPo4hpQQYNbA82s4BpIRpdbAxWG67bgysEjR9DhdlHUvIVtYAkmYZNQwQduGip4ckmzBasOSq4gucBCBTWC0cwMIhWIyKpZh6GWYM/BiZ8K0mPB/xcYDyzbVNBkeO+LYNhJHlWAH9SDEMDlpNsCuPyaPghwhc9swd0Ui7+C+Z6ghh8YC/6EYMTrOgnlpifwFpz04IJT9xQcrwDalpMbW/CSdbNhCQqM162SyTCbsUqmS/ovT/KAol/uU/SHneSIybctms63LVyXQwWAumHXZI/A58YrZ7IZ9Bqv1DUmH5+pQiqEHCKfkzBilbaOHCtkpepuulD1IvSt+U0MaX496df8us9ku/kNvH03g037E0q82/40CAb8AAAAAElFTkSuQmCC" width="191" height="34" alt="SECCON" border="0">
+</a>
+
+<h1>Shellcoder&#039;s Challenge!</h1>
+
+<table border="0" width="400">
+<tr valign="top">
+<td>
+
+<table border="0">
+<tr><td>UserID:</td><td><input type="text" id="user" value=""></td></tr>
+<tr><td>Password:</td><td><input type="password" id="pass" value=""></td></tr>
+<tr><td id="mes"></td><td><div align="right">
+  <input type="button" value=" login " onclick="javascript:auth(0)">
+  </div></td></tr>
+</table>
+
+<p><a href="./register.html">create new account</a></p>
+
+</td>
+
+</tr>
+</table>
+
+</body>
+</html>
+
