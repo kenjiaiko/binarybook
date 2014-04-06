@@ -12,6 +12,15 @@ http://07c00.hatenablog.com/
 P138,P139のスタックの図において $1,$2,$3 の順序が逆です。  
 （正確には $1 と $3 が逆になります）  
   
+P145の syscall. hにおいて各行の先頭が #de ne となっています。  
+正確には #define です。  
+  
+また誤植ではありませんが、  
+P141の実行例にて gdb 内で python を実行するコマンドは、  
+特殊文字が入り組んでおり分かりにくいですが   
+(gdb)r "`python -c 'print "A"*80'`"  
+となっています
+  
 ####VisualC++ 2010 Express版でのビルド方法
 拡張子.slnはVC++のソリューションファイルです。  
 VC++がインストールされていればそのままダブルクリックするだけでOKです。  
@@ -47,6 +56,9 @@ Ubuntu-12.04
 http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
   
 ログインのためのuser/passは書籍（3章）を確認してください。  
+Ubuntuで root になる場合は、  
+一度 guest アカウントでログインした後 sudo su コマンドを実行し、  
+root になってください。  
   
 起動にはVMWare Playerが必要です。  
 http://www.vmware.com/products/player/
