@@ -18,7 +18,7 @@ P145の syscall.hにおいて各行の先頭が #de ne となっています。
 また誤植ではありませんが、  
 P141の実行例にて gdb 内で python を実行するコマンドは、  
 特殊文字が入り組んでおり分かりにくいですが   
-`(gdb)r "\`python -c 'print "A"*80'\`"`  
+(gdb)r "\`python -c 'print "A"*80'\`"  
 となっています
   
 ####VisualC++ 2010 Express版でのビルド方法
