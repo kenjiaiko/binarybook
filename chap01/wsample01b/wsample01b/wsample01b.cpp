@@ -5,15 +5,15 @@
 
 int cpy(void)
 {
-	// ©ƒtƒ@ƒCƒ‹ƒpƒXæ“¾
+	// è·å–è‡ªèº«æ–‡ä»¶è·¯å¾„
 	TCHAR szThis[2048];
 	GetModuleFileName(NULL, szThis, sizeof(szThis));
-	// ƒXƒ^[ƒgƒAƒbƒvƒtƒ@ƒCƒ‹ƒpƒXæ“¾
+	// è·å–å¯åŠ¨æ–‡ä»¶å¤¹è·¯å¾„
 	TCHAR szStartup[2048];
 	SHGetFolderPath(NULL, CSIDL_STARTUP, 
 		NULL, SHGFP_TYPE_CURRENT, szStartup);
 	lstrcat(szStartup, _T("\\wsample01b.exe"));
-	// ƒXƒ^[ƒgƒAƒbƒv‚Ö©•ª‚ğƒRƒs[
+	// å°†è‡ªèº«å¤åˆ¶åˆ°å¯åŠ¨æ–‡ä»¶å¤¹
 	CopyFile(szThis, szStartup, FALSE);
 	return 0;
 }

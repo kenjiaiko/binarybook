@@ -1,30 +1,30 @@
 
-¡sample_mal‚É‚Â‚¢‚Ä
+â– å…³äºsample_mal
 
-sample_mal‚ÍˆÈ‰º‚Ì3‚Â‚Ì“®ì‚ğs‚¢‚Ü‚·B
+sample_malä¼šæ‰§è¡Œä¸‹é¢ä¸‰ä¸ªæ“ä½œï¼š
 
-Eƒtƒ@ƒCƒ‹Œn
-@|ƒXƒ^[ƒgƒAƒbƒvƒtƒHƒ‹ƒ_ˆÈ‰º‚É 0.exe ‚Æ‚¢‚¤ƒtƒ@ƒCƒ‹‚ğì¬
-@|ƒ}ƒCƒhƒLƒ…ƒƒ“ƒgƒtƒHƒ‹ƒ_ˆÈ‰º‚É 1.exe ‚Æ‚¢‚¤ƒtƒ@ƒCƒ‹‚ğì¬
-EƒŒƒWƒXƒgƒŠŒn
-@|Software\\Microsoft\\Windows\\CurrentVersion\\Run\sample_mal‚ğì¬
+ãƒ»æ–‡ä»¶
+ã€€âˆ’åœ¨å¯åŠ¨æ–‡ä»¶å¤¹ä¸­åˆ›å»º 0.exe æ–‡ä»¶
+ã€€âˆ’åœ¨æˆ‘çš„æ–‡æ¡£æ–‡ä»¶å¤¹ä¸­åˆ›å»º 1.exe æ–‡ä»¶
+ãƒ»æ³¨å†Œè¡¨
+ã€€âˆ’åˆ›å»ºSoftware\\Microsoft\\Windows\\CurrentVersion\\Run\sample_mal
 
-chap01/sample_mal/sample_mal/sample_mal.cpp ‚Ì 226s–ÚˆÈ~‚ªŠY“–ˆ—‚Å‚·B
+chap01/sample_mal/sample_mal/sample_mal.cpp ä¸­ç¬¬226è¡Œå¯¹åº”è¯¥æ“ä½œã€‚
 
-ÀsŒã‚ÌŠÂ‹«‚Ì–ß‚µ•û‚Í‘Ğ‚É‚à‘‚©‚ê‚Ä‚ ‚è‚Ü‚·‚ªAŸ‚Ì3‚Â‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+è¿è¡Œè¿™ä¸ªç¨‹åºåçš„æ¢å¤æ–¹æ³•åœ¨ä¹¦ä¸­ä¹Ÿæœ‰ä»‹ç»ï¼Œä¸»è¦æ˜¯ä¸‹é¢ä¸‰ä¸ªæ­¥éª¤ï¼š
 
-Eƒtƒ@ƒCƒ‹Œn
-@|ƒXƒ^[ƒgƒAƒbƒvƒtƒHƒ‹ƒ_‚©‚ç 0.exe ‚ğíœ
-@|ƒ}ƒCƒhƒLƒ…ƒƒ“ƒgƒtƒHƒ‹ƒ_‚©‚ç 1.exe ‚ğíœ
-EƒŒƒWƒXƒgƒŠŒn
-@|Software\\Microsoft\\Windows\\CurrentVersion\\Run\sample_mal‚ğíœ
+ãƒ»æ–‡ä»¶
+ã€€âˆ’åˆ é™¤å¯åŠ¨æ–‡ä»¶å¤¹ä¸­çš„ 0.exe æ–‡ä»¶
+ã€€âˆ’åˆ é™¤æˆ‘çš„æ–‡æ¡£æ–‡ä»¶å¤¹ä¸­çš„ 1.exe æ–‡ä»¶
+ãƒ»æ³¨å†Œè¡¨
+ã€€âˆ’åˆ é™¤Software\\Microsoft\\Windows\\CurrentVersion\\Run\sample_mal
 
-¡ƒXƒ^[ƒgƒAƒbƒvƒtƒHƒ‹ƒ_‚ÌêŠ
+â– å¯åŠ¨æ–‡ä»¶å¤¹çš„ä½ç½®
 
 Windows7 or Vista
-C:\Users\iƒ†[ƒU[–¼j\AppData\Roaming\
+C:\Users\ï¼ˆç”¨æˆ·åï¼‰\AppData\Roaming\
   Microsoft\Windows\Start Menu\Programs\Startup
 
 WindowsXP
-C:\Documents and Settings\iƒ†[ƒU[–¼j\ƒXƒ^[ƒg ƒƒjƒ…[\
-  ƒvƒƒOƒ‰ƒ€\ƒXƒ^[ƒgƒAƒbƒv
+C:\Documents and Settings\ï¼ˆç”¨æˆ·åï¼‰\ã€Œå¼€å§‹ã€èœå•\
+  ç¨‹åº\å¯åŠ¨
