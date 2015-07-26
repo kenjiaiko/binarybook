@@ -1,57 +1,35 @@
-###‚½‚Ì‚µ‚¢ƒoƒCƒiƒŠ‚Ì•à‚«•û
-‘Ðu‚½‚Ì‚µ‚¢ƒoƒCƒiƒŠ‚Ì•à‚«•ûv‚ÅŽg—p‚·‚éƒvƒƒOƒ‰ƒ€ˆêŽ®‚Å‚·B  
-‰E‚ÌƒTƒCƒhƒo[‚É‚ ‚éuDownload ZIPv‚ðƒNƒŠƒbƒN‚·‚é‚Æ‚·‚×‚Ä‚Ìƒtƒ@ƒCƒ‹‚ðƒ_ƒEƒ“ƒ[ƒh‚Å‚«‚Ü‚·B  
+###æœ‰è¶£çš„äºŒè¿›åˆ¶
+è¿™é‡Œå‘å¸ƒäº†ã€Šæœ‰è¶£çš„äºŒè¿›åˆ¶ã€‹ä¸€ä¹¦ä¸­æ‰€æ¶‰åŠçš„ç¨‹åºä»£ç ï¼Œç‚¹å‡»å³ä¾§â€œDownload ZIPâ€å¯æ‰“åŒ…ä¸‹è½½æ‰€æœ‰çš„æ–‡ä»¶ã€‚  
   
-o”ÅŽÐƒy[ƒW  
+å‡ºç‰ˆç¤¾ç½‘é¡µ  
 http://gihyo.jp/book/2013/978-4-7741-5918-8
+
+ä¸­æ–‡ç‰ˆç½‘é¡µ  
+http://www.ituring.com.cn/book/1500
   
-’˜ŽÒƒuƒƒOi‘Ð‚É‚Í‘‚¯‚È‚©‚Á‚½“à—e‚È‚Ç‚ð‘‚¢‚Ä‚Ü‚·j  
+ä½œè€…åšå®¢ï¼ˆé‡Œé¢æœ‰ä¸€äº›æ²¡èƒ½å†™è¿›ä¹¦ä¸­çš„å†…å®¹ï¼‰  
 http://07c00.hatenablog.com/
   
-####³Œë•\
-chap02/guitest2/user.dmp‚Ìƒtƒ@ƒCƒ‹‚ªˆÙ‚È‚Á‚Ä‚¢‚½‚½‚ßA  
-P90‚É‚ ‚éà–¾’Ê‚è‚Ì‰æ–Ê‚É‚È‚è‚Ü‚¹‚ñ‚Å‚µ‚½B  
-user.dmp‚Í‚·‚Å‚ÉXVÏ‚Ý‚È‚Ì‚ÅŒ»Ý‚Í–â‘è‚ ‚è‚Ü‚¹‚ñB  
+####VisualC++ 2010 Expressç‰ˆçš„ç¼–è¯‘æ–¹æ³•
+æ‰©å±•åä¸º.slnçš„æ–‡ä»¶æ˜¯VC++çš„solutionæ–‡ä»¶ã€‚å¦‚æžœå·²ç»å®‰è£…å¥½VC++ï¼Œç›´æŽ¥åŒå‡»å°±å¯ä»¥æ‰“å¼€ï¼Œç„¶åŽç‚¹å‡»èœå•ä¸­çš„ ç”Ÿæˆâ‡’ç”Ÿæˆè§£å†³æ–¹æ¡ˆï¼Œåœ¨Releaseæˆ–Debugç›®å½•ä¸­å°±ä¼šç”Ÿæˆå¯æ‰§è¡Œæ–‡ä»¶ã€‚  
+
+####ç¬¬1ã€œ2ç« ç¤ºä¾‹æºä»£ç çš„ç¼–è¯‘æ³¨æ„äº‹é¡¹
+chap01å’Œchap02ä¸­çš„EXEæ–‡ä»¶éƒ½ç¦ç”¨äº†ASLRã€‚ä¸è¿‡é¡¹ç›®æ–‡ä»¶ï¼ˆæºä»£ç ï¼‰ä¸­çš„è®¾ç½®æ˜¯å¯ç”¨ASLRçš„ï¼Œå› æ­¤ï¼Œå¦‚æžœå¤§å®¶æ‰“å¼€é¡¹ç›®æ–‡ä»¶ï¼Œç„¶åŽç”¨æºä»£ç ç›´æŽ¥ç”ŸæˆEXEæ–‡ä»¶ï¼Œå°±æœ‰å¯èƒ½å’Œä¹¦ä¸­æ‰€æè¿°çš„çŠ¶æ€äº§ç”Ÿå·®å¼‚ã€‚ï¼ˆå¦‚æžœä½¿ç”¨é¢„ç¼–è¯‘çš„EXEæ–‡ä»¶åˆ™æ²¡æœ‰é—®é¢˜ï¼‰
   
-P138,P139‚ÌƒXƒ^ƒbƒN‚Ì}‚É‚¨‚¢‚Ä $1,$2,$3 ‚Ì‡˜‚ª‹t‚Å‚·B  
-i³Šm‚É‚Í $1 ‚Æ $3 ‚ª‹t‚É‚È‚è‚Ü‚·j  
-  
-P145‚Ì syscall.h‚É‚¨‚¢‚ÄŠes‚Ìæ“ª‚ª #de ne ‚Æ‚È‚Á‚Ä‚¢‚Ü‚·B  
-³Šm‚É‚Í #define ‚Å‚·B  
-  
-‚Ü‚½ŒëA‚Å‚Í‚ ‚è‚Ü‚¹‚ñ‚ªA  
-P141‚ÌŽÀs—á‚É‚Ä gdb “à‚Å python ‚ðŽÀs‚·‚éƒRƒ}ƒ“ƒh‚ÍA  
-“ÁŽê•¶Žš‚ª“ü‚è‘g‚ñ‚Å‚¨‚è•ª‚©‚è‚É‚­‚¢‚Å‚·‚ª   
-(gdb)r "\`python -c 'print "A"*80'\`"  
-‚Æ‚È‚Á‚Ä‚¢‚Ü‚·
-  
-####VisualC++ 2010 Express”Å‚Å‚Ìƒrƒ‹ƒh•û–@
-Šg’£Žq.sln‚ÍVC++‚Ìƒ\ƒŠƒ…[ƒVƒ‡ƒ“ƒtƒ@ƒCƒ‹‚Å‚·B  
-VC++‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚ê‚Î‚»‚Ì‚Ü‚Üƒ_ƒuƒ‹ƒNƒŠƒbƒN‚·‚é‚¾‚¯‚ÅOK‚Å‚·B  
-‚»‚ÌŒãƒƒjƒ…[‚©‚ç ƒfƒoƒbƒOËƒ\ƒŠƒ…[ƒVƒ‡ƒ“‚Ìƒrƒ‹ƒh ‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢B  
-Release or DebugƒtƒHƒ‹ƒ_ˆÈ‰º‚ÉŽÀsƒtƒ@ƒCƒ‹ˆêŽ®‚ªì¬‚³‚ê‚Ü‚·B  
-  
-####1`2Í‚ÌƒTƒ“ƒvƒ‹ƒ\[ƒX‚ðƒrƒ‹ƒh‚·‚é‚Æ‚«‚Ì’ˆÓ“_
-chap01‚Æchap02‚É“ü‚Á‚Ä‚¢‚éEXEƒtƒ@ƒCƒ‹‚ÍASLR‚ðƒIƒt‚ÉÝ’è‚µ‚Ä‚¢‚Ü‚·B  
-‚µ‚©‚µƒvƒƒWƒFƒNƒgƒtƒ@ƒCƒ‹iƒ\[ƒXƒR[ƒhj‚É‚Â‚¢‚Ä‚Í  
-ASLRƒIƒ“‚ÌEXEƒtƒ@ƒCƒ‹‚ð¶¬‚·‚éÝ’è‚É‚È‚Á‚Ä‚¢‚Ü‚·B  
-‚»‚Ì‚½‚ßAƒvƒƒWƒFƒNƒgƒtƒ@ƒCƒ‹‚ðŠJ‚«A  
-ƒ\[ƒXƒR[ƒh‚ð‚»‚Ì‚Ü‚Üƒrƒ‹ƒh‚µ‚Äì¬‚µ‚½EXEƒtƒ@ƒCƒ‹‚ðŽg‚¤‚Æ  
-–{‘‚É‘‚©‚ê‚Ä‚¢‚éó‘Ô‚Æ‚ÍˆÙ‚È‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B  
-i‚·‚Å‚É‚ ‚éEXEƒtƒ@ƒCƒ‹‚ðŽg‚¤‚Î‚ ‚¢‚Í–â‘è‚ ‚è‚Ü‚¹‚ñj  
-  
-ASLR‚ðƒIƒt‚É‚µ‚½EXEƒtƒ@ƒCƒ‹‚ðì¬‚µ‚½‚¢‚Î‚ ‚¢‚ÍˆÈ‰º‚Ìƒy[ƒW‚ðŒ©‚Ä‚­‚¾‚³‚¢B  
+å¦‚æžœè¦ç”Ÿæˆç¦ç”¨ASLRçš„EXEæ–‡ä»¶ï¼Œè¯·å‚è§ä¸‹é¢è¿™ç¯‡åšå®¢ï¼ˆæ—¥æ–‡ï¼‰ï¼š  
 http://07c00.hatenablog.com/entry/2013/08/07/033443
+
+ã€è¯‘è€…æ³¨ã€‘  
+ç®€å•æ¥è¯´ï¼Œå°±æ˜¯åœ¨ é¡¹ç›®å±žæ€§â†’é“¾æŽ¥å™¨â†’é«˜çº§â†’éšæœºåŸºå€ ä¸­è¿›è¡Œè®¾ç½®ã€‚
   
-####ƒvƒƒZƒXƒ_ƒ“ƒv‚·‚éƒc[ƒ‹‚ðì‚è‚½‚¢
-2Í‚ÅƒvƒƒZƒXƒ_ƒ“ƒv‚ðs‚¤ƒc[ƒ‹iƒƒgƒ\ƒ“”ŽŽm‚È‚Çj‚ð‰ðà‚µ‚Ü‚µ‚½‚ªA  
-‚»‚ê‚ç‚ðì¬‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B  
-  
-ƒvƒƒZƒXƒ_ƒ“ƒv‚·‚éƒvƒƒOƒ‰ƒ€‚ðì¬‚µ‚Ä‚Ý‚æ‚¤I  
+####è‡ªå·±ç¼–å†™è¿›ç¨‹è½¬å‚¨å·¥å…·
+ç¬¬2ç« ä¸­ä»‹ç»äº†ä»¥Dr. Watsonä¸ºä»£è¡¨çš„è¿›ç¨‹è½¬å‚¨å·¥å…·ï¼Œå¤§å®¶ä¹Ÿå¯ä»¥è‡ªå·±ç¼–å†™ä¸€ä¸ªè¿™æ ·çš„å·¥å…·ã€‚
+
+ç¼–å†™è¿›ç¨‹è½¬å‚¨å·¥å…·çš„æ–¹æ³•å’Œæºä»£ç å¯å‚è§ä¸‹é¢è¿™ç¯‡åšå®¢ï¼ˆæ—¥æ–‡ï¼‰ï¼š  
 http://07c00.hatenablog.com/entry/2013/09/07/015519
-  
-####3Í‚ÌFreeBSD‚ÆUbuntuŠÂ‹«‚É‚Â‚¢‚Ä
-OS‚²‚Æ•K—v‚È‚Î‚ ‚¢‚Í‚»‚ê‚¼‚êˆÈ‰º‚ÌURL‚©‚çƒ_ƒEƒ“ƒ[ƒh‚Å‚«‚Ü‚·B  
+
+####å…³äºŽç¬¬3ç« ä¸­çš„FreeBSDå’ŒUbuntuçŽ¯å¢ƒ
+å¦‚æžœå¤§å®¶éœ€è¦è¿™ä¸¤ä¸ªæ“ä½œç³»ç»Ÿï¼Œå¯ä»¥ä»Žä¸‹é¢çš„åœ°å€ä¸‹è½½ï¼š
   
 FreeBSD-8.3  
 http://07c00.com/tmp/FreeBSD_8.3_binbook.zip
@@ -59,37 +37,29 @@ http://07c00.com/tmp/FreeBSD_8.3_binbook.zip
 Ubuntu-12.04  
 http://07c00.com/tmp/Ubuntu-12.04_binbook.zip
   
-ƒƒOƒCƒ“‚Ì‚½‚ß‚Ìuser/pass‚Í‘Ði3Íj‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B  
-Ubuntu‚Å root ‚É‚È‚éê‡‚ÍAˆê“x guest ƒAƒJƒEƒ“ƒg‚ÅƒƒOƒCƒ“‚µ‚½Œã  
-sudo su ƒRƒ}ƒ“ƒh‚ðŽÀs‚µ root ‚É‚È‚Á‚Ä‚­‚¾‚³‚¢B  
+ç™»å½•ç”¨æˆ·åå’Œå¯†ç è¯·å‚è§ä¹¦çš„ç¬¬3ç« ã€‚Ubuntuä¸­éœ€è¦å…ˆç”¨guestè´¦å·ç™»å½•ï¼Œç„¶åŽç”¨æ‰§è¡Œ`sudo su`å‘½ä»¤æ‰èƒ½åˆ‡æ¢ä¸ºrootèº«ä»½ã€‚
   
-‹N“®‚É‚ÍVMWare Player‚ª•K—v‚Å‚·B  
+ä¸Šé¢ä¸¤ä¸ªé•œåƒéœ€è¦ç”¨VMware Playeræ¥è¿è¡Œï¼š  
 http://www.vmware.com/products/player/
   
-####P159-P160‚Ìcolumn‚É‚Â‚¢‚Ä
-P159‚ÌuprintfŒnŠÖ”‚É‹Nˆö‚·‚éƒtƒH[ƒ}ƒbƒgƒXƒgƒŠƒ“ƒOƒoƒOv‚Í  
-ˆÈ‰º‚Ìƒy[ƒW‚ÅÚ×‚ð‰ðà‚µ‚Ä‚¢‚Ü‚·B  
-‹»–¡‚ª‚ ‚ê‚Î“Ç‚ñ‚Å‚Ý‚Ä‚­‚¾‚³‚¢B  
+####å…³äºŽ3.1æœ€åŽçš„ä¸“æ 
+å…³äºŽ3.1æœ€åŽçš„ä¸“æ â€œprintfç±»å‡½æ•°çš„å­—ç¬¦ä¸²æ ¼å¼åŒ–bugâ€ï¼Œåœ¨ä¸‹é¢çš„åšå®¢ï¼ˆæ—¥æ–‡ï¼‰ä¸­æœ‰æ›´è¯¦ç»†çš„è¯´æ˜Žï¼Œæœ‰å…´è¶£çš„è¯å¯ä»¥è¯»ä¸€è¯»ã€‚  
   
-ƒtƒH[ƒ}ƒbƒgƒXƒgƒŠƒ“ƒOƒoƒOiformat bugj‚ðŽŽ‚µ‚Ä‚Ý‚éB  
+å°è¯•å­—ç¬¦ä¸²æ ¼å¼åŒ–bugï¼ˆformat bugï¼‰  
 http://07c00.hatenablog.com/entry/2013/08/10/112404
   
-####4Í‚ÅG‚ê‚Ä‚¢‚éƒfƒoƒbƒKì¬‚âAPIƒtƒbƒN‚É‚Â‚¢‚Ä
-4Í‚ÅG‚ê‚Ä‚¢‚éƒfƒoƒbƒKì¬‚âAPIƒtƒbƒN‚É‚Â‚¢‚Ä  
-LinuxŠÂ‹«‚Å‚â‚è‚½‚¢‚Î‚ ‚¢‚ÍˆÈ‰º‚Ìƒy[ƒW‚ªŽQl‚É‚È‚é‚ÆŽv‚¢‚Ü‚·B  
+####å…³äºŽç¬¬4ç« ä¸­æåˆ°çš„ç¼–å†™è°ƒè¯•å™¨ä»¥åŠAPIé’©å­
+å…³äºŽç¬¬4ç« ä¸­æåˆ°çš„ç¼–å†™è°ƒè¯•å™¨ä»¥åŠAPIé’©å­ï¼Œåœ¨Linuxç³»ç»Ÿä¸­çš„è¿ç”¨å¯ä»¥å‚è€ƒä¸‹é¢ä¸¤ç¯‡åšå®¢ï¼ˆæ—¥æ–‡ï¼‰ï¼š  
 http://07c00.hatenablog.com/entry/2013/08/31/142001  
 http://07c00.hatenablog.com/entry/2013/09/02/003629
   
-####P226‚ÅG‚ê‚ç‚ê‚Ä‚¢‚éCVE-2009-0927‚Ì‰ðÍ“®‰æ
-–{‘‚Å‚ÍExploit‚ÌÚ×‚É‚Í‚Ù‚Æ‚ñ‚ÇG‚ê‚Ä‚¢‚Ü‚¹‚ñ‚ªA  
-ˆÈ‰º‚Ì“®‰æ‚ÅExploit‚Ì‚¿‚å‚Á‚Æ‚µ‚½‰ðÍ‚ð‚â‚Á‚Ä‚¢‚Ü‚·B  
-‹»–¡‚ª‚ ‚ê‚ÎŒ©‚Ä‚Ý‚Ä‚­‚¾‚³‚¢B  
+####5.1ä¸­æåˆ°çš„CVE-2009-0927çš„åˆ†æžè§†é¢‘
+åœ¨æœ¬ä¹¦æ­£æ–‡ä¸­æ²¡æœ‰å¯¹è¿™ä¸ªæ¼æ´žçš„æ”»å‡»è¿›è¡Œè®²è§£ï¼Œåœ¨ä¸‹é¢è¿™ä¸ªè§†é¢‘ä¸­å¯¹è¿™ä¸ªæ¼æ´žè¿›è¡Œäº†ç®€å•çš„åˆ†æžï¼Œæœ‰å…´è¶£çš„è¯å¯ä»¥çœ‹ä¸€çœ‹ã€‚  
   
 Introducing of Security Camp 2013 "Software security class"  
 http://www.youtube.com/watch?v=eUslcqff6_k
   
-####P228-P229‚Ìcolumn‚É‚Â‚¢‚Ä
-P229‚Ìumsfpayload‚ðŽg‚Á‚ÄWindowsŠÂ‹«‚Å“®ì‚·‚éshellcode‚ðì¬v‚Å  
-‰æ‘œiƒRƒ“ƒ\[ƒ‹j‚Ì•¶Žš‚ª’×‚ê‚Ä‚æ‚­Œ©‚¦‚È‚¢‚©‚à‚µ‚ê‚Ü‚¹‚ñB  
+####å…³äºŽ5.1ä¸­çš„ä¸“æ 
+â€œä½¿ç”¨msfpayloadç”ŸæˆWindowsçŽ¯å¢ƒçš„shellcodeâ€è¿™å¼ å›¾ç‰‡ä¸­çš„æ–‡å­—å¯èƒ½çœ‹ä¸æ¸…æ¥šï¼ŒåŽŸå›¾åœ¨è¿™é‡Œï¼š  
 ![System Console](pics_for_readme/1.png)
   
