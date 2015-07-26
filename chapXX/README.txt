@@ -1,48 +1,43 @@
 
-‚±‚ÌƒtƒHƒ‹ƒ_‚É‚Í
-‘Ð‚Å‚ÍG‚ê‚Ä‚¢‚È‚¢ƒvƒƒOƒ‰ƒ€‚ð’u‚¢‚Ä‚¢‚Ü‚·B
+è¿™ä¸ªç›®å½•ä¸­å­˜æ”¾äº†ä¸€äº›ä¹¦ä¸­æœªæ¶‰åŠçš„ç¨‹åºã€‚
 
-‘Ð‚ð“Ç‚ñ‚¾‚ ‚Æ
-‚³‚ç‚ÉÚ‚µ‚¢î•ñ‚ð’m‚è‚½‚¢•û‚ÍŽQl‚É‚µ‚Ä‚­‚¾‚³‚¢B
+è¯»è¿‡æœ¬ä¹¦ä¹‹åŽï¼Œå¦‚æžœæƒ³è¦äº†è§£ä¸€äº›æ›´ç›¸ä¿¡çš„ä¿¡æ¯ï¼Œè¯·å‚è€ƒè¿™é‡Œçš„å†…å®¹ã€‚
 
 
-¡dumpXX
+â– dumpXX
 
-WindowsŠÂ‹«‚É‚ÄƒvƒƒZƒX‚ðƒ_ƒ“ƒv‚·‚éƒTƒ“ƒvƒ‹ƒvƒƒOƒ‰ƒ€‚Å‚·B
-ˆÈ‰º‚Ìƒy[ƒW‚ÅŠÈ’P‚È‰ðà‚ð‚µ‚Ä‚¢‚Ü‚·B
+è¿™æ˜¯ä¸€ä¸ªåœ¨WindowsçŽ¯å¢ƒä¸‹å®žçŽ°è¿›ç¨‹è½¬å‚¨çš„ç¤ºä¾‹ç¨‹åºã€‚
+ä¸‹é¢çš„ç½‘é¡µï¼ˆæ—¥æ–‡ï¼‰ä¸­æœ‰ç®€å•çš„è¯´æ˜Žã€‚
 
-ƒvƒƒZƒXƒ_ƒ“ƒv‚·‚éƒvƒƒOƒ‰ƒ€‚ðì¬‚µ‚Ä‚Ý‚æ‚¤I
+åˆ¶ä½œä¸€ä¸ªè¿›ç¨‹è½¬å‚¨ç¨‹åº
 http://07c00.hatenablog.com/entry/2013/09/07/015519
 
 
-¡asmdisas
+â– asmdisas
 
 80x86 32-bit Disassembler and Assembler
 http://www.ollydbg.de/srcdescr.htm
 
-ã‹LƒTƒCƒg‚ÅŒöŠJ‚³‚ê‚Ä‚¢‚éƒAƒZƒ“ƒuƒ‰A‹tƒAƒZƒ“ƒuƒ‰‚ð
-Visual C++ 2010 Express”Å‚Åƒrƒ‹ƒh‚Å‚«‚é‚æ‚¤‚É‚µ‚½‚à‚Ì‚Å‚·B
+è¿™æ˜¯å°†ä¸Šé¢ç½‘ç«™ä¸­å‘å¸ƒçš„æ±‡ç¼–ã€åæ±‡ç¼–å™¨æ”¹é€ æˆ
+å¯ä»¥ç”¨Visual C++ 2010 Expressç‰ˆè¿›è¡Œç¼–è¯‘çš„ç‰ˆæœ¬ã€‚
 
-ƒAƒZƒ“ƒuƒ‰–½—ß‚Æƒ}ƒVƒ“Œê‚Å‘ŠŒÝ•ÏŠ·‚µ‚½‚¢B
+å¦‚ä½•å¯¹æ±‡ç¼–è¯­è¨€æŒ‡ä»¤å’Œæœºå™¨è¯­è¨€æŒ‡ä»¤è¿›è¡Œç›¸äº’è½¬æ¢
 http://07c00.hatenablog.com/entry/2013/09/24/021307
 
 
-¡ShellcodersChallenge
+â– ShellcodersChallenge
 
-ƒZƒLƒ…ƒŠƒeƒBƒRƒ“ƒeƒXƒg SECCON2013 ‚É‚¨‚¢‚Ä
-Žg—p‚³‚ê‚½–â‘è‚Ìƒ\[ƒXƒR[ƒhˆêŽ®‚Å‚·B
-Ubuntu12.04/x86 + Apache2 ‚É‚Ä“®ìŠm”F‚µ‚Ä‚¢‚Ü‚·B
+è¿™æ˜¯å®‰å…¨ç«žèµ› SECCON2013 ä¸­æ‰€ä½¿ç”¨çš„èµ›é¢˜æºä»£ç ã€‚
+å·²åœ¨ Ubuntu12.04/x86 + Apache2 çŽ¯å¢ƒä¸‹ç¡®è®¤å¯ç”¨ã€‚
 
-SECCON2013‚É‚Â‚¢‚Ä‚Í http://2013.seccon.jp/ ‚ð‚²ŽQÆ‚­‚¾‚³‚¢B
-Žg—p‚³‚ê‚½‚Ì‚Í SECCONŠÖ¼i‘åãj‘å‰ï ‚Å‚ ‚èA
+å…³äºŽ SECCON2013 è¯·è®¿é—® http://2013.seccon.jp/
+ä½¿ç”¨æœ¬ä»£ç çš„æ˜¯ SECCONå…³è¥¿ï¼ˆå¤§é˜ªï¼‰èµ›åŒº
 http://2013.seccon.jp/blog/2013/12/seccon-2016.html
-‚±‚¿‚ç‚Ìƒy[ƒW‚ÉÚ×‚ªÚ‚Á‚Ä‚¢‚Ü‚·B
+è¯¦æƒ…è¯·å‚è§ä¸Šè¿°ç½‘é¡µã€‚
 
-‹Zp“I‚É‚Íuƒuƒ‰ƒEƒUã‚©‚çx86–½—ß‚ðŽÀs‚Å‚«‚éŠÂ‹«‚ðì‚Á‚Ä‚Ý‚év‚ð
-ƒRƒ“ƒZƒvƒg‚Éì‚Á‚Ä‚Ý‚½‚à‚Ì‚É‚È‚è‚Ü‚·B
+è¿™æ˜¯ä¸€ä¸ªä»¥â€œåœ¨æµè§ˆå™¨ä¸Šæ‰§è¡Œx86æŒ‡ä»¤â€ä¸ºç›®æ ‡è€Œç¼–å†™çš„ä¸€ä¸ªæŠ€æœ¯è¯•éªŒå“ã€‚
 
-ˆÈ‰º‚ª“®ì‚ð‰ðà‚µ‚½ƒXƒ‰ƒCƒh‚Å‚·iƒTƒ“ƒhƒ{ƒbƒNƒX•ûŽ®jB
+ä¸‹é¢æ˜¯å…¶åŽŸç†çš„è®²è§£å¹»ç¯ç‰‡ï¼ˆæ²™ç®±æ–¹å¼ï¼‰ã€‚
 http://www.slideshare.net/KenjiAiko/on-web-30208130
 
-‚±‚Ì‚Ü‚Ü‚¾‚ÆÆŽã«‚ª‚ ‚éƒvƒƒOƒ‰ƒ€‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚Å
-‚ ‚­‚Ü‚ÅŽ©g‚Ì‚Ý‚ªƒAƒNƒZƒX‚Å‚«‚éŠÂ‹«‚Å‚¨ŽŽ‚µ‚­‚¾‚³‚¢B
+è¿™ä¸ªç¨‹åºæœ¬èº«æ˜¯æœ‰æ¼æ´žçš„ï¼Œå› æ­¤è¯·å¤§å®¶åœ¨ç§æœ‰çŽ¯å¢ƒä¸‹è¿›è¡Œå°è¯•ã€‚

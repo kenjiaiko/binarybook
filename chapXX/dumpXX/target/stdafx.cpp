@@ -1,8 +1,6 @@
-// stdafx.cpp : •W€ƒCƒ“ƒNƒ‹[ƒh target.pch ‚Ì‚Ý‚ð
-// ŠÜ‚Þƒ\[ƒX ƒtƒ@ƒCƒ‹‚ÍAƒvƒŠƒRƒ“ƒpƒCƒ‹Ï‚Ýƒwƒbƒ_[‚É‚È‚è‚Ü‚·B
-// stdafx.obj ‚É‚ÍƒvƒŠƒRƒ“ƒpƒCƒ‹Ï‚ÝŒ^î•ñ‚ªŠÜ‚Ü‚ê‚Ü‚·B
+// stdafx.cpp : åªåŒ…å«æ ‡å‡†å¼•ç”¨ sample_mal.pch çš„æºæ–‡ä»¶ç”Ÿæˆé¢„ç¼–è¯‘å¤´æ–‡ä»¶ã€‚
+// stdafx.obj ä¸­åŒ…å«é¢„ç¼–è¯‘çš„ç±»åž‹ä¿¡æ¯ã€‚
 
 #include "stdafx.h"
 
-// TODO: ‚±‚Ìƒtƒ@ƒCƒ‹‚Å‚Í‚È‚­ASTDAFX.H ‚Å•K—v‚È
-// ’Ç‰Áƒwƒbƒ_[‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+// TODO: é¢å¤–éœ€è¦å¼•ç”¨çš„å¤´æ–‡ä»¶åœ¨ STDAFX.H ä¸­ã€‚

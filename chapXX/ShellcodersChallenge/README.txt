@@ -1,26 +1,23 @@
 
-¡ShellcodersChallenge
+â– ShellcodersChallenge
 
-ƒZƒLƒ…ƒŠƒeƒBƒRƒ“ƒeƒXƒg SECCON2013 ‚É‚¨‚¢‚Ä
-Žg—p‚³‚ê‚½–â‘è‚Ìƒ\[ƒXƒR[ƒhˆêŽ®‚Å‚·B
-Ubuntu12.04/x86 + Apache2 ‚É‚Ä“®ìŠm”F‚µ‚Ä‚¢‚Ü‚·B
+è¿™æ˜¯å®‰å…¨ç«žèµ› SECCON2013 ä¸­æ‰€ä½¿ç”¨çš„èµ›é¢˜æºä»£ç ã€‚
+å·²åœ¨ Ubuntu12.04/x86 + Apache2 çŽ¯å¢ƒä¸‹ç¡®è®¤å¯ç”¨ã€‚
 
-SECCON2013‚É‚Â‚¢‚Ä‚Í http://2013.seccon.jp/ ‚ð‚²ŽQÆ‚­‚¾‚³‚¢B
-Žg—p‚³‚ê‚½‚Ì‚Í SECCONŠÖ¼i‘åãj‘å‰ï ‚Å‚ ‚èA
+å…³äºŽ SECCON2013 è¯·è®¿é—® http://2013.seccon.jp/
+ä½¿ç”¨æœ¬ä»£ç çš„æ˜¯ SECCONå…³è¥¿ï¼ˆå¤§é˜ªï¼‰èµ›åŒº
 http://2013.seccon.jp/blog/2013/12/seccon-2016.html
-‚±‚¿‚ç‚Ìƒy[ƒW‚ÉÚ×‚ªÚ‚Á‚Ä‚¢‚Ü‚·B
+è¯¦æƒ…è¯·å‚è§ä¸Šè¿°ç½‘é¡µã€‚
 
-‹Zp“I‚É‚Íuƒuƒ‰ƒEƒUã‚©‚çx86–½—ß‚ðŽÀs‚Å‚«‚éŠÂ‹«‚ðì‚Á‚Ä‚Ý‚év‚ð
-ƒRƒ“ƒZƒvƒg‚Éì‚Á‚Ä‚Ý‚½‚à‚Ì‚É‚È‚è‚Ü‚·B
+è¿™æ˜¯ä¸€ä¸ªä»¥â€œåœ¨æµè§ˆå™¨ä¸Šæ‰§è¡Œx86æŒ‡ä»¤â€ä¸ºç›®æ ‡è€Œç¼–å†™çš„ä¸€ä¸ªæŠ€æœ¯è¯•éªŒå“ã€‚
 
-ˆÈ‰º‚ª“®ì‚ð‰ðà‚µ‚½ƒXƒ‰ƒCƒh‚Å‚·iƒTƒ“ƒhƒ{ƒbƒNƒX•ûŽ®jB
+ä¸‹é¢æ˜¯å…¶åŽŸç†çš„è®²è§£å¹»ç¯ç‰‡ï¼ˆæ²™ç®±æ–¹å¼ï¼‰ã€‚
 http://www.slideshare.net/KenjiAiko/on-web-30208130
 
-‚±‚Ì‚Ü‚Ü‚¾‚ÆÆŽã«‚ª‚ ‚éƒvƒƒOƒ‰ƒ€‚Æ‚È‚Á‚Ä‚¢‚Ü‚·‚Ì‚Å
-‚ ‚­‚Ü‚ÅŽ©g‚Ì‚Ý‚ªƒAƒNƒZƒX‚Å‚«‚éŠÂ‹«‚Å‚¨ŽŽ‚µ‚­‚¾‚³‚¢B
+è¿™ä¸ªç¨‹åºæœ¬èº«æ˜¯æœ‰æ¼æ´žçš„ï¼Œå› æ­¤è¯·å¤§å®¶åœ¨ç§æœ‰çŽ¯å¢ƒä¸‹è¿›è¡Œå°è¯•ã€‚
 
-ˆê•”ˆÃ†‰»ˆ—‚Ì‚½‚ß‚ÉPyCrypt‚ðŽg‚Á‚Ä‚¢‚Ü‚·B
+å…¶ä¸­çš„åŠ å¯†éƒ¨åˆ†ä½¿ç”¨äº† PyCryptï¼š
 https://www.dlitz.net/software/pycrypto/
 
-ˆê•””FØ‚Ì‚½‚ß‚É CaptchaƒT[ƒrƒX ‚ðŽg‚Á‚Ä‚¢‚Ü‚·B
+å…¶ä¸­çš„éªŒè¯ç ä½¿ç”¨ Captchator æœåŠ¡ï¼š
 http://captchator.com/

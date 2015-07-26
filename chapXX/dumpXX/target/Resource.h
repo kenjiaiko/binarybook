@@ -17,7 +17,7 @@
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
 #endif
-// 新しいオブジェクトの次の既定値
+// 譁ｰ蟇ｹ雎｡逧�鮟倩ｮ､蛟ｼ
 //
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
