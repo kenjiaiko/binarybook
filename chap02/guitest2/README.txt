@@ -1,20 +1,16 @@
-¡guitest2.exe‚É‚Â‚¢‚Ä
+â– å…³äºŽguitest2.exe
 
-guitest2.exe‚ÍˆÓ}“I‚ÉˆÙíI—¹‚·‚éƒvƒƒOƒ‰ƒ€‚Å‚·B
-‹N“®‚·‚é‚ÆƒEƒBƒ“ƒhƒE‚ªŠJ‚«‚Ü‚·B
+guitest2.exeæ˜¯ä¸€ä¸ªä¼šæœ‰æ„åˆ¶é€ å´©æºƒçš„ç¨‹åºã€‚
+è¿è¡ŒåŽä¼šæ‰“å¼€ä¸€ä¸ªçª—å£ã€‚
 
-ƒƒjƒ…[‚©‚ç@ƒwƒ‹ƒv¨ƒo[ƒWƒ‡ƒ“î•ñ@‚Æ‘I‘ð‚µA
-ƒo[ƒWƒ‡ƒ“î•ñ‚ð•Â‚¶‚é‚ÆˆÙíI—¹‚µ‚Ü‚·B
+ä»Žèœå•ä¸­é€‰æ‹©ã€€ãƒ˜ãƒ«ãƒ—â†’ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã€€å†å…³é—­è¯¥å¯¹è¯æ¡†æ—¶ç¨‹åºå°±ä¼šå´©æºƒã€‚
 
-user.dmp‚Ædrwtsn32.log‚ÍˆÙíI—¹‚µ‚½Û‚Ìƒ_ƒ“ƒvƒtƒ@ƒCƒ‹‚ÆƒƒO‚Å‚·B
-–{‘‚Å‚Í‚±‚ê‚ð‰ðÍ‚µ‚Ä‚¢‚Ü‚·B
+user.dmpå’Œdrwtsn32.logä¸ºç¨‹åºå´©æºƒæ—¶äº§ç”Ÿçš„è½¬å‚¨æ–‡ä»¶å’Œæ—¥å¿—æ–‡ä»¶ã€‚
+åœ¨æœ¬ä¹¦ä¸­å°±æ˜¯å¯¹è¿™äº›æ–‡ä»¶è¿›è¡Œåˆ†æžçš„ã€‚
 
-user.dmp‚ÍƒGƒ‰[Žž‚ÌƒvƒƒZƒX‚ÌŠ®‘Sƒ_ƒ“ƒv‚ÅAuser_small.dmp‚ÍÅ¬ƒ_ƒ“ƒv‚Å‚·B
+user.dmpæ˜¯å‡ºé”™æ—¶äº§ç”Ÿçš„å®Œæ•´è½¬å‚¨ï¼Œuser_small.dmpæ˜¯å°‘é‡è½¬å‚¨ã€‚
 
-WindowsXP‚Å‚Í
-ƒXƒ^[ƒg¨ƒtƒ@ƒCƒ‹–¼‚ðŽw’è‚µ‚ÄŽÀs‚©‚çudrwtsn32v‚ðŽÀs
-ŠJ‚¢‚½ƒEƒBƒ“ƒhƒE‚É‚ ‚éuƒNƒ‰ƒbƒVƒ…ƒ_ƒ“ƒv‚ÌŽí—Þv‚©‚ç
-Š®‘Sƒ_ƒ“ƒv‚ð¶¬‚·‚é‚©AÅ¬ƒ_ƒ“ƒv‚ð¶¬‚·‚é‚©‘I‘ð‚Å‚«‚Ü‚·B
+åœ¨WindowsXPä¸­é€‰æ‹© å¼€å§‹â†’è¿è¡Œï¼Œè¾“å…¥â€œdrwtsn32â€å¹¶ç¡®å®šï¼Œ
+ä»Žå¼¹å‡ºçª—å£ä¸­çš„â€œæ•…éšœè½¬å‚¨ç±»åž‹â€å¯é€‰æ‹©æ˜¯ç”Ÿæˆå®Œæ•´è½¬å‚¨è¿˜æ˜¯å°‘é‡è½¬å‚¨ã€‚
 
-Š®‘Sƒ_ƒ“ƒv‚Í¶¬‚ÉŽžŠÔ‚ª‚©‚©‚é‚½‚ßi‚Ü‚½ƒTƒCƒY‚à‘å‚«‚¢‚½‚ßj
-ƒfƒtƒHƒ‹ƒg‚Å‚ÍÅ¬ƒ_ƒ“ƒv‚ÉÝ’è‚³‚ê‚Ä‚¢‚Ü‚·B
+ç”Ÿæˆå®Œæ•´è½¬å‚¨éžå¸¸è€—æ—¶ï¼ˆè€Œä¸”æ–‡ä»¶å°ºå¯¸ä¹Ÿå¾ˆå¤§ï¼‰ï¼Œå› æ­¤é»˜è®¤è®¾ç½®ä¸ºå°‘é‡è½¬å‚¨ã€‚

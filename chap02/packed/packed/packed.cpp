@@ -8,11 +8,11 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	if(IsDebuggerPresent()){
-		// ƒfƒoƒbƒKã‚Å“®ì‚µ‚Ä‚¢‚é
+		// åœ¨è°ƒè¯•å™¨ä¸Šè¿è¡Œ
 		printf("on debugger\n");
 		return -1;
 	}else{
-		// ƒfƒoƒbƒKã‚Å“®ì‚µ‚Ä‚¢‚È‚¢
+		// æœªåœ¨è°ƒè¯•å™¨ä¸Šè¿è¡Œ
 		if(strcmp(argv[1], "unpacking") == 0){
 			printf("correct!\n");
 		}else{
