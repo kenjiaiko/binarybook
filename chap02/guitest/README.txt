@@ -1,10 +1,9 @@
-¡guitest.exe‚É‚Â‚¢‚Ä
+â– å…³äºŽguitest.exe
 
-guitest.exe‚ÍˆÓ}“I‚ÉˆÙíI—¹‚·‚éƒvƒƒOƒ‰ƒ€‚Å‚·B
-‹N“®‚·‚é‚ÆƒEƒBƒ“ƒhƒE‚ªŠJ‚«‚Ü‚·B
+guitest.exeæ˜¯ä¸€ä¸ªä¼šæœ‰æ„åˆ¶é€ å´©æºƒçš„ç¨‹åºã€‚
+è¿è¡ŒåŽä¼šæ‰“å¼€ä¸€ä¸ªçª—å£ã€‚
 
-ƒƒjƒ…[‚©‚ç@ƒwƒ‹ƒv¨ƒo[ƒWƒ‡ƒ“î•ñ@‚Æ‘I‘ð‚µA
-ƒo[ƒWƒ‡ƒ“î•ñ‚ð•Â‚¶‚é‚ÆˆÙíI—¹‚µ‚Ü‚·B
+ä»Žèœå•ä¸­é€‰æ‹©ã€€ãƒ˜ãƒ«ãƒ—â†’ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã€€å†å…³é—­è¯¥å¯¹è¯æ¡†æ—¶ç¨‹åºå°±ä¼šå´©æºƒã€‚
 
-user.dmp‚Ædrwtsn32.log‚ÍˆÙíI—¹‚µ‚½Û‚Ìƒ_ƒ“ƒvƒtƒ@ƒCƒ‹‚ÆƒƒO‚Å‚·B
-–{‘‚Å‚Í‚±‚ê‚ð‰ðÍ‚µ‚Ä‚¢‚Ü‚·B
+user.dmpå’Œdrwtsn32.logä¸ºç¨‹åºå´©æºƒæ—¶äº§ç”Ÿçš„è½¬å‚¨æ–‡ä»¶å’Œæ—¥å¿—æ–‡ä»¶ã€‚
+åœ¨æœ¬ä¹¦ä¸­å°±æ˜¯å¯¹è¿™äº›æ–‡ä»¶è¿›è¡Œåˆ†æžçš„ã€‚

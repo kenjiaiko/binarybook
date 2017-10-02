@@ -1,8 +1,8 @@
 #pragma once
 
-// SDKDDKVer.h ‚ðƒCƒ“ƒNƒ‹[ƒh‚·‚é‚ÆA—˜—p‚Å‚«‚éÅ‚àãˆÊ‚Ì Windows ƒvƒ‰ƒbƒgƒtƒH[ƒ€‚ª’è‹`‚³‚ê‚Ü‚·B
+// SDKDDKVer.h çš„å¼•ç”¨ä»£è¡¨ä½¿ç”¨å½“å‰å¯ç”¨æœ€æ–°çš„ Windows å¹³å°çŽ¯å¢ƒã€‚
 
-// ˆÈ‘O‚Ì Windows ƒvƒ‰ƒbƒgƒtƒH[ƒ€—p‚ÉƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðƒrƒ‹ƒh‚·‚éê‡‚ÍAWinSDKVer.h ‚ðƒCƒ“ƒNƒ‹[ƒh‚µA
-// SDKDDKVer.h ‚ðƒCƒ“ƒNƒ‹[ƒh‚·‚é‘O‚ÉAƒTƒ|[ƒg‘ÎÛ‚Æ‚·‚éƒvƒ‰ƒbƒgƒtƒH[ƒ€‚ðŽ¦‚·‚æ‚¤‚É _WIN32_WINNT ƒ}ƒNƒ‚ðÝ’è‚µ‚Ü‚·B
+// å¦‚æžœéœ€è¦ç”Ÿæˆå…¼å®¹è¾ƒæ—©ç‰ˆæœ¬ Windows çš„åº”ç”¨ç¨‹åºï¼Œéœ€è¦å¼•ç”¨ WinSDKVer.h ï¼Œ
+// å¹¶åœ¨å¼•ç”¨ SDKDDKVer.h ä¹‹å‰ï¼Œé…ç½®è¡¨ç¤ºæ‰€æ”¯æŒå¹³å°ç‰ˆæœ¬çš„ _WIN32_WINNT å®ã€‚
 
 #include <SDKDDKVer.h>

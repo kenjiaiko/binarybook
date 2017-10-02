@@ -1,6 +1,5 @@
-// stdafx.h : •W€‚ÌƒVƒXƒeƒ€ ƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹‚ÌƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹A‚Ü‚½‚Í
-// ŽQÆ‰ñ”‚ª‘½‚­A‚©‚Â‚ ‚Ü‚è•ÏX‚³‚ê‚È‚¢AƒvƒƒWƒFƒNƒgê—p‚ÌƒCƒ“ƒNƒ‹[ƒh ƒtƒ@ƒCƒ‹
-// ‚ð‹Lq‚µ‚Ü‚·B
+// stdafx.h : è¿™é‡ŒåŒ…å«æ¨™æº–ç³»ç»Ÿå¼•ç”¨æ–‡ä»¶çš„å¼•ç”¨æ–‡ä»¶ï¼Œ
+// ä»¥åŠéœ€è¦ç»å¸¸å¼•ç”¨ä¸”å¾ˆå°‘å‘ç”Ÿå˜åŒ–çš„é¡¹ç›®ä¸“ç”¨å¼•ç”¨æ–‡ä»¶ã€‚
 //
 
 #pragma once
@@ -12,4 +11,4 @@
 
 
 
-// TODO: ƒvƒƒOƒ‰ƒ€‚É•K—v‚È’Ç‰Áƒwƒbƒ_[‚ð‚±‚±‚ÅŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+// TODO: ç¨‹åºé¢å¤–éœ€è¦çš„å¤´æ–‡ä»¶æ”¾åœ¨è¿™é‡Œ

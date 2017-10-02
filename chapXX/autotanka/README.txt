@@ -1,13 +1,12 @@
-‚±‚±‚É‚ ‚éƒ\[ƒXƒR[ƒh‚Í
+è¿™é‡Œçš„æºä»£ç æ˜¯åœ¨ä¸‹é¢è¿™æœ¬ä¹¦ä¸­ä½¿ç”¨çš„ï¼š
 
-0‚Æ1‚ÌƒRƒ“ƒsƒ…[ƒ^¢ŠE@ƒoƒCƒiƒŠ‚Å—V‚Ú‚¤I
+0ã¨1ã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ä¸–ç•Œã€€ãƒã‚¤ãƒŠãƒªã§éŠã¼ã†ï¼ï¼ˆ0å’Œ1çš„è®¡ç®—æœºä¸–ç•Œ çŽ©è½¬äºŒè¿›åˆ¶ï¼ï¼‰
 https://book.mynavi.jp/ec/products/detail/id=24980
 http://www.amazon.co.jp/dp/4839951020
 
-‚Ì‘Ð“à‚É‚ÄŽg—p‚³‚ê‚½‚à‚Ì‚Å
-ƒAƒZƒ“ƒuƒ‰’Z‰Ì‚ÌŽ©“®¶¬‚É‚Â‚¢‚Ä‚ÌƒR[ƒh‚Æ‚È‚è‚Ü‚·B
+è¿™äº›ä»£ç ç”¨äºŽè‡ªåŠ¨ç”Ÿæˆæ±‡ç¼–çŸ­æ­Œã€‚
 
-ƒRƒ“ƒpƒCƒ‹‚É‚Í Udis86 ‚ª•K—v‚Å‚·B
+ç¼–è¯‘æ—¶éœ€è¦ä¾èµ– Udis86ã€‚
 http://udis86.sourceforge.net/
 
 -----
@@ -20,6 +19,5 @@ gcc mt5.c -o mt5 -ludis86
 gcc tanka.s -o tanka
 -----
 
-ƒAƒZƒ“ƒuƒ‰’Z‰Ì‚É‚Â‚¢‚Ä‚Í
+å…³äºŽæ±‡ç¼–çŸ­æ­Œï¼Œè¯·å‚è§ä»¥ä¸‹ç½‘é¡µï¼š
 http://kozos.jp/asm-tanka/
-‚±‚¿‚ç‚ð‚²ŽQÆ‚­‚¾‚³‚¢B
